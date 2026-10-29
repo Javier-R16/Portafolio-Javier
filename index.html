@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portafolio de Proyectos</title>
+<meta name="description" content="Sistemas financieros, reportería, planillas, dashboards, apps y agentes de IA.">
+<meta property="og:title" content="Portafolio de Proyectos">
+<meta property="og:description" content="Sistemas financieros, reportería, planillas, dashboards, apps y agentes de IA.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="img/shots7_pol__pol_dashboard.jpg">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230071e3'/%3E%3Cpath d='M20 22l-8 10 8 10M44 22l8 10-8 10M36 18l-8 28' stroke='white' stroke-width='5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Diseño: oscuro cinematográfico. Titular con muro 3D interactivo (ratón + scroll), aurora y piso en perspectiva.
+   Superficies de vidrio con luz que sigue al cursor, inclinación 3D sutil y aparición escalonada. */
+:root{
+  --bg:#000000; --bg2:#07080c; --ink:#f4f6fb; --muted:#9aa3b8; --line:#ffffff17; --line2:#ffffff2b; --soft:#ffffff0d;
+  --glass:#ffffff0a; --glass2:#ffffff12; --tile:#0c0f1a;
+  --a1:#4f8cff; --a2:#9b5cff; --a3:#22d3ee; --ok:#22c55e;
+  --accent:#6ea0ff; --accent-ink:#ffffff; --shade:#000000b3; --frame:#1a1d29;
+  --grad:linear-gradient(110deg,var(--a1) 0%,var(--a2) 50%,var(--a3) 100%);
+  --font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+  color-scheme:dark;
+}
+
+:root[data-theme="dark"]{ color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.55;letter-spacing:-.011em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.in{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:700px){.in{padding-left:max(28px,env(safe-area-inset-left,0px));padding-right:max(28px,env(safe-area-inset-right,0px))}}
+a{color:var(--accent);text-decoration:none}
+h1,h2,h3,h4{margin:0;text-wrap:balance;letter-spacing:-.035em}
+p{margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--a3);outline-offset:3px}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding:.14em .04em .06em;margin:-.14em -.04em -.06em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--grad)}
+.muted{color:var(--muted)}
+
+/* barra */
+.progress{position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(var(--p,0));background:var(--grad);z-index:40}
+.nav{position:fixed;top:max(12px,env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:30;width:min(1120px,calc(100% - 24px));border-radius:16px;
+  background:color-mix(in srgb,var(--bg) 62%,transparent);backdrop-filter:saturate(160%) blur(18px);-webkit-backdrop-filter:saturate(160%) blur(18px);border:1px solid var(--line);transition:background 300ms ease,box-shadow 300ms ease}
+.nav.scrolled{box-shadow:0 20px 50px -24px #000000aa}
+.nav .bar{display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px;padding:0 10px 0 18px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;color:var(--ink);letter-spacing:-.02em}
+.logo i{width:26px;height:26px;border-radius:8px;background:var(--grad);display:grid;place-items:center;font-style:normal;font-size:11px;font-weight:800;color:#fff;box-shadow:0 6px 18px -6px var(--a2)}
+.nav nav{display:flex;gap:4px;font-size:14px}
+.nav nav a{color:var(--muted);padding:8px 12px;border-radius:10px;transition:color 200ms ease,background 200ms ease}
+.nav nav a:hover,.nav nav a.on{color:var(--ink);background:var(--soft)}
+.nav .right{display:flex;align-items:center;gap:8px}
+.theme{width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:transparent;cursor:pointer;display:grid;place-items:center;color:var(--muted);transition:color 200ms,background 200ms}
+.theme:hover{color:var(--ink);background:var(--soft)}
+.theme svg{width:18px;height:18px}
+.pill{position:relative;display:inline-flex;align-items:center;gap:8px;background:var(--grad);background-size:160% 100%;color:#fff;border:0;border-radius:12px;padding:10px 18px;font-size:15px;font-weight:600;cursor:pointer;
+  box-shadow:0 10px 30px -10px color-mix(in srgb,var(--a2) 70%,transparent),inset 0 1px 0 #ffffff40;transition:transform 180ms var(--ease),background-position 500ms var(--ease),box-shadow 300ms}
+.pill:hover{background-position:100% 0;box-shadow:0 14px 40px -10px color-mix(in srgb,var(--a2) 90%,transparent),inset 0 1px 0 #ffffff40}
+.pill:active{transform:scale(.97)}
+.pill svg{width:16px;height:16px;transition:transform 200ms var(--ease)}
+.pill:hover svg{transform:translateX(3px)}
+.pill.ghost{background:var(--glass);color:var(--ink);border:1px solid var(--line2);box-shadow:none;backdrop-filter:blur(10px)}
+.pill.ghost:hover{background:var(--glass2)}
+.nav .pill{padding:9px 14px;font-size:14px}
+
+/* titular 3D */
+.hero3d{position:relative;overflow:hidden;isolation:isolate;min-height:max(720px,100svh);display:flex;align-items:center;perspective:1600px}
+.aurora{position:absolute;inset:-20%;z-index:-4;pointer-events:none;filter:blur(70px);opacity:.75}
+.aurora span{position:absolute;border-radius:50%;mix-blend-mode:screen}
+.aurora .b1{width:46vw;height:46vw;left:48%;top:4%;background:radial-gradient(circle,var(--a1) 0,transparent 65%)}
+.aurora .b2{width:40vw;height:40vw;left:66%;top:34%;background:radial-gradient(circle,var(--a2) 0,transparent 65%)}
+.aurora .b3{width:30vw;height:30vw;left:30%;top:56%;background:radial-gradient(circle,var(--a3) 0,transparent 65%);opacity:.6}
+@media (prefers-reduced-motion:no-preference){
+  .aurora .b1{animation:drift 18s ease-in-out infinite alternate}
+  .aurora .b2{animation:drift 22s ease-in-out infinite alternate-reverse}
+  .aurora .b3{animation:drift 26s ease-in-out infinite alternate}
+  @keyframes drift{to{transform:translate3d(-8vw,6vh,0) scale(1.15)}}
+}
+.floor{position:absolute;left:-50%;right:-50%;bottom:-10%;height:60%;z-index:-3;pointer-events:none;transform:rotateX(74deg);transform-origin:50% 100%;
+  background-image:linear-gradient(var(--line2) 1px,transparent 1px),linear-gradient(90deg,var(--line2) 1px,transparent 1px);background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(60% 80% at 50% 100%,#000 10%,transparent 70%);mask-image:radial-gradient(60% 80% at 50% 100%,#000 10%,transparent 70%)}
+@media (prefers-reduced-motion:no-preference){.floor{animation:floor 6s linear infinite}@keyframes floor{to{background-position:0 64px,0 0}}}
+.stage{position:absolute;inset:0;z-index:-2;pointer-events:none;transform-style:preserve-3d;
+  transform:translate3d(0,calc(var(--sp,0) * -80px),0) rotateX(calc(var(--ry,0) * -4deg)) rotateY(calc(var(--rx,0) * 6deg));transition:transform 600ms var(--ease)}
+.wall{position:absolute;inset:-32% -26% -32% 40%;perspective:1800px;perspective-origin:30% 40%;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 26%,#000 80%,transparent 100%),linear-gradient(0deg,transparent 0%,#000 30%);mask-image:linear-gradient(90deg,transparent 0%,#000 26%,#000 80%,transparent 100%);}
+.plane{position:absolute;inset:0;display:flex;gap:20px;transform-style:preserve-3d;
+  transform:rotateX(calc(52deg - var(--sp,0) * 18deg)) rotateZ(calc(-32deg + var(--sp,0) * 8deg)) translate3d(0,-6%,0) scale(calc(1 + var(--sp,0) * .15))}
+.plane .col{flex:1 1 0;min-width:0;overflow:hidden}
+.plane .track{display:flex;flex-direction:column;gap:20px}
+.plane img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top left;border-radius:14px;
+  box-shadow:0 40px 70px -24px #000000c0,0 0 0 1px #ffffff1f,0 0 40px -10px color-mix(in srgb,var(--a1) 45%,transparent)}
+@media (prefers-reduced-motion:no-preference){
+  .plane .track{animation:wallflow var(--d,70s) linear infinite}
+  .plane .col.up .track{animation-direction:reverse}
+  @keyframes wallflow{to{transform:translateY(-50%)}}
+}
+.floaty{position:absolute;z-index:-1;pointer-events:none;display:flex;align-items:center;gap:10px;padding:10px 14px 10px 10px;border-radius:14px;font-size:13px;font-weight:500;color:var(--ink);
+  background:color-mix(in srgb,var(--bg) 55%,transparent);border:1px solid var(--line2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 50px -20px #000000c0;
+  transform:translate3d(calc(var(--rx,0) * var(--z) * 1px),calc(var(--ry,0) * var(--z) * 1px),0);transition:transform 700ms var(--ease)}
+.floaty b{display:block;font-size:11px;font-family:var(--mono);font-weight:400;color:var(--muted)}
+.floaty .dot{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;color:#fff}
+.floaty .dot svg{width:17px;height:17px}
+.floaty.f1{right:30%;top:22%;--z:28}.floaty.f2{right:6%;top:56%;--z:44}.floaty.f3{right:24%;bottom:14%;--z:18}
+@media (prefers-reduced-motion:no-preference){.floaty{animation:bob 6s ease-in-out infinite}.floaty.f2{animation-delay:-2s}.floaty.f3{animation-delay:-4s}@keyframes bob{50%{translate:0 -10px}}}
+.live{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 var(--ok);display:inline-block}
+@media (prefers-reduced-motion:no-preference){.live{animation:ping 2s infinite}@keyframes ping{70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}}
+.hero{position:relative;width:100%;padding-block:150px 110px}
+.hero > *{max-width:600px}
+.badge{display:inline-flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);padding:6px 14px 6px 8px;border-radius:999px;border:1px solid var(--line2);background:var(--glass);backdrop-filter:blur(10px);margin-bottom:26px}
+.badge b{color:var(--ink);font-weight:600;padding:2px 9px;border-radius:999px;background:var(--soft);display:inline-flex;align-items:center;gap:7px}
+.hero h1{font-size:clamp(46px,6.4vw,92px);line-height:.98;font-weight:800;letter-spacing:-.055em;max-width:8.4em}
+.hero h1 .w{display:inline-block;white-space:pre}
+@media (prefers-reduced-motion:no-preference){
+  .hero h1 .w{opacity:0;transform:translateY(.4em) rotateX(-40deg);filter:blur(8px);animation:word 900ms var(--ease) forwards;animation-delay:calc(var(--i) * 70ms + 150ms)}
+  @keyframes word{to{opacity:1;transform:none;filter:none}}
+  .hero .fade{opacity:0;animation:fade 900ms var(--ease) forwards;animation-delay:var(--dl,.6s)}
+  @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+}
+.hero p.lead{font-size:clamp(18px,1.9vw,21px);color:var(--muted);max-width:30em;margin:28px 0 0;line-height:1.5}
+.hero .who{margin-top:14px;font-size:14px;color:var(--muted)}
+.hero .who b{color:var(--ink);font-weight:600}
+.hero .ctas{display:flex;gap:12px;align-items:center;margin-top:34px;flex-wrap:wrap}
+.hero .ctas .pill{font-size:16px;padding:14px 22px;min-height:48px}
+.stats{display:flex;gap:0;margin-top:54px;flex-wrap:wrap;border:1px solid var(--line);border-radius:18px;background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);width:fit-content;max-width:100%}
+.stats div{display:flex;flex-direction:column;padding:18px 26px}
+.stats div + div{border-left:1px solid var(--line)}
+.stats strong{font-size:clamp(30px,3.4vw,42px);font-weight:700;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.stats span{font-size:13px;color:var(--muted);margin-top:8px}
+.scrollcue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);width:24px;height:38px;border-radius:12px;border:1.5px solid var(--line2);display:flex;justify-content:center;padding-top:7px}
+.scrollcue::after{content:"";width:3px;height:8px;border-radius:2px;background:var(--ink);opacity:.7}
+@media (prefers-reduced-motion:no-preference){.scrollcue::after{animation:cue 1.8s ease-in-out infinite}@keyframes cue{60%{transform:translateY(10px);opacity:0}}}
+
+/* cinta de tecnologías */
+.marquee{border-block:1px solid var(--line);padding:20px 0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marquee .mt{display:flex;gap:48px;width:max-content}
+.marquee span{font-family:var(--mono);font-size:14px;color:var(--muted);white-space:nowrap;display:flex;align-items:center;gap:48px}
+.marquee span::after{content:"✦";color:var(--a2);opacity:.6;font-size:10px}
+@media (prefers-reduced-motion:no-preference){.marquee .mt{animation:mq 50s linear infinite}@keyframes mq{to{transform:translateX(-50%)}}}
+
+/* secciones */
+section{padding-block:120px;position:relative}
+.sec-title{max-width:820px;margin:0 auto 60px;text-align:center}
+.sec-title .eyebrow{justify-content:center}
+.sec-title h2{font-size:clamp(36px,5.4vw,68px);line-height:1.02;font-weight:800;margin-top:16px}
+.sec-title p{font-size:clamp(17px,1.8vw,20px);color:var(--muted);margin-top:18px;line-height:1.55}
+.band{background:linear-gradient(180deg,transparent,var(--bg2) 12%,var(--bg2) 88%,transparent)}
+
+/* superficies con luz */
+.tile,.mod,.reps,.flow div,.card,.card-contact{position:relative;background:linear-gradient(180deg,var(--glass2),var(--glass));border:1px solid var(--line);isolation:isolate}
+:is(.tile,.mod,.reps,.card,.card-contact)::before{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;pointer-events:none;opacity:0;transition:opacity 300ms ease;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--a1) 18%,transparent),transparent 60%)}
+:is(.tile,.mod,.reps,.card,.card-contact)::after{content:"";position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity 300ms ease;padding:1px;
+  background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--a2) 80%,transparent),transparent 60%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+:is(.tile,.mod,.reps,.card,.card-contact):hover::before,:is(.tile,.mod,.reps,.card,.card-contact):hover::after{opacity:1}
+html .tilt.tilt.tilt{transform:perspective(1000px) rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg));transition:transform 400ms var(--ease)}
+
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+.tile{border-radius:24px;padding:30px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.tile h3{font-size:clamp(21px,2.1vw,26px);font-weight:700;line-height:1.15}
+.tile p{color:var(--muted);font-size:16px}
+.tile .ico{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;color:#fff;margin-bottom:8px;box-shadow:0 10px 26px -10px currentColor,inset 0 1px 0 #ffffff50}
+.tile .ico svg{width:23px;height:23px}
+.t-6{grid-column:span 6}.t-4{grid-column:span 4}.t-3{grid-column:span 3}.t-2{grid-column:span 2}
+.tile.feature{flex-direction:row;align-items:center;gap:40px;padding:44px;overflow:hidden}
+.tile.feature .txt{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:14px}
+.tile.feature h3{font-size:clamp(28px,3.2vw,42px)}
+.tile.feature p{font-size:18px}
+.flow-mini{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:10px;position:relative}
+.flow-mini::before{content:"";position:absolute;left:31px;top:20px;bottom:20px;width:1px;background:linear-gradient(var(--a1),var(--a2),var(--a3))}
+.flow-mini div{position:relative;display:flex;align-items:center;gap:14px;background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:13px 16px;font-size:15px}
+.flow-mini div b{font-family:var(--mono);font-size:11px;color:#fff;min-width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--grad);font-weight:500}
+.cloud{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:8px}
+.cloud span{font-size:12px;font-family:var(--mono);border:1px solid var(--line2);border-radius:8px;padding:4px 10px;color:var(--muted)}
+
+/* capítulos */
+.chapter{padding-block:120px;position:relative}
+.chapter::before{content:"";position:absolute;left:50%;top:0;width:min(900px,80%);height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,var(--line2),transparent)}
+.ch-head{text-align:center;max-width:880px;margin:0 auto}
+.ch-head .eyebrow{justify-content:center}
+.ch-head h2{font-size:clamp(38px,5.8vw,76px);line-height:1.02;font-weight:800;margin-top:14px}
+.ch-head p{font-size:clamp(17px,1.9vw,21px);color:var(--muted);margin-top:20px;line-height:1.55}
+.ch-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:44px auto 0;max-width:860px}
+.ch-stats div{display:flex;flex-direction:column;align-items:center;text-align:center;padding:20px 14px;border-radius:18px;border:1px solid var(--line);background:var(--glass)}
+.ch-stats strong{font-size:clamp(28px,3.4vw,40px);font-weight:800;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ch-stats span{font-size:13px;color:var(--muted);margin-top:8px}
+
+/* galería en portátil 3D */
+.gal{max-width:1040px;margin:64px auto 0;perspective:2400px;position:relative}
+.gal::before{content:"";position:absolute;left:10%;right:10%;top:20%;bottom:10%;z-index:-1;background:var(--grad);filter:blur(90px);opacity:.28;border-radius:50%}
+.gal .lid{background:var(--frame);border-radius:20px 20px 8px 8px;padding:12px 12px 16px;transform:rotateX(14deg) scale(.96);transform-origin:50% 100%;transition:transform 900ms var(--ease),box-shadow 900ms var(--ease);
+  box-shadow:0 70px 100px -50px #000000d0,0 0 0 1px #ffffff1a,inset 0 1px 0 #ffffff26}
+.gal.inview .lid,.gal:hover .lid,.gal:focus-within .lid{transform:none}
+.gal .lid::after{content:"";display:block;height:14px;margin:12px -44px -30px;border-radius:0 0 24px 24px;background:linear-gradient(#3a3d4a,#1c1e27);box-shadow:0 20px 40px -10px #000}
+@media (prefers-reduced-motion:reduce){.gal .lid{transform:none}}
+.gal-view{position:relative;aspect-ratio:16/10;border-radius:6px;overflow:hidden;background:#000}
+.gal-track{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.gal-track::-webkit-scrollbar{display:none}
+.gal-track button{all:unset;flex:0 0 100%;height:100%;scroll-snap-align:start;cursor:zoom-in;display:block}
+.gal-track img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+.gal-track button:focus-visible{outline:3px solid var(--a3);outline-offset:-4px}
+.gal-under{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px}
+.gal-cap{font-size:15px;color:var(--muted);min-height:22px;flex:1;min-width:0}
+.gal-cap b{color:var(--ink);font-weight:600}
+.gal-ctl{display:flex;align-items:center;gap:10px;flex:none}
+.round{width:44px;height:44px;border-radius:12px;border:1px solid var(--line2);background:var(--glass);color:var(--ink);cursor:pointer;display:grid;place-items:center;font-size:20px;transition:transform 160ms var(--ease),background 200ms ease,border-color 200ms}
+.round:hover{background:var(--glass2);border-color:var(--accent)}
+.round:active{transform:scale(.94)}
+.count{font-family:var(--mono);font-size:12px;color:var(--muted);min-width:54px;text-align:center}
+.thumbs{display:flex;gap:10px;overflow-x:auto;padding:16px 2px 6px;scrollbar-width:thin}
+.thumbs button{all:unset;flex:none;width:100px;aspect-ratio:16/10;border-radius:10px;overflow:hidden;cursor:pointer;opacity:.45;outline:2px solid transparent;outline-offset:2px;transition:opacity 200ms ease,transform 200ms var(--ease)}
+.thumbs button.on{opacity:1;outline-color:var(--a2)}
+.thumbs button:hover{opacity:.9;transform:translateY(-2px)}
+.thumbs button:focus-visible{outline-color:var(--a3)}
+.thumbs img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+
+/* módulos */
+.mods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:72px}
+.mod{border-radius:20px;padding:24px;min-width:0}
+.mod h4{font-size:18px;font-weight:650;letter-spacing:-.02em}
+.mod ul{margin:12px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.mod li{font-size:15px;color:var(--muted);padding-left:18px;position:relative;line-height:1.45}
+.mod li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:2px;background:var(--grad);transform:rotate(45deg)}
+.more{display:flex;justify-content:center;margin-top:22px}
+.spot{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+.spot .mod{background:linear-gradient(150deg,color-mix(in srgb,var(--a2) 20%,transparent),var(--glass) 60%);border-color:color-mix(in srgb,var(--a2) 40%,var(--line))}
+.spot .mod h4{font-size:22px}
+.reps{margin-top:14px;border-radius:20px;padding:26px}
+.reps h4{font-size:19px;font-weight:650}
+.reps ol{margin:16px 0 0;padding:0;list-style:none;columns:3 220px;column-gap:28px}
+.reps li{font-size:14px;color:var(--muted);padding:6px 0;break-inside:avoid;display:flex;gap:10px;border-bottom:1px dashed var(--line)}
+.reps li b{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:500;min-width:22px;padding-top:2px}
+.flow{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap;counter-reset:f}
+.flow div{flex:1 1 180px;min-width:0;border-radius:18px;padding:20px;font-size:15px;color:var(--muted);line-height:1.45}
+.flow div b{display:inline-block;font-family:var(--mono);font-size:11px;color:#fff;margin-bottom:10px;font-weight:500;background:var(--grad);padding:3px 9px;border-radius:7px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:30px}
+.chips span{font-size:12px;font-family:var(--mono);color:var(--muted);border:1px solid var(--line2);border-radius:8px;padding:5px 11px}
+
+/* proyectos */
+.filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:18px}
+.filter{border:1px solid var(--line2);background:var(--glass);color:var(--muted);border-radius:12px;padding:9px 16px;font-size:14px;cursor:pointer;min-height:42px;transition:transform 160ms var(--ease),background 200ms ease,color 200ms,border-color 200ms}
+.filter:hover{color:var(--ink);border-color:var(--accent)}
+.filter:active{transform:scale(.97)}
+.filter[aria-pressed="true"]{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 8px 24px -10px var(--a2)}
+.filter span{opacity:.65;margin-left:8px;font-size:12px;font-family:var(--mono)}
+.searchwrap{position:relative;width:min(460px,100%);margin:0 auto 40px}
+.searchwrap svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--muted);pointer-events:none}
+.search{display:block;width:100%;font:inherit;font-size:16px;border:1px solid var(--line2);background:var(--glass);color:var(--ink);border-radius:14px;padding:13px 16px 13px 46px;transition:border-color 200ms,box-shadow 200ms}
+.search:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 22%,transparent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+.card{border-radius:22px;overflow:hidden;display:flex;flex-direction:column;min-width:0;transition:transform 400ms var(--ease),box-shadow 400ms var(--ease),border-color 300ms}
+@media (hover:hover) and (pointer:fine){.card:hover{box-shadow:0 30px 60px -30px #000000c0;border-color:var(--line2)}}
+.card .body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card .cat{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.card h3{font-size:20px;font-weight:650;letter-spacing:-.02em;line-height:1.2}
+.card p{font-size:15px;color:var(--muted)}
+.card ul{margin:2px 0 0;padding-left:18px;font-size:14px;color:var(--muted)}
+.card .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:12px}
+.card .tags span{font-family:var(--mono);font-size:11px;color:var(--muted);background:var(--soft);border:1px solid var(--line);border-radius:7px;padding:2px 8px}
+.car{position:relative;background:var(--soft);overflow:hidden}
+.car-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;aspect-ratio:16/10}
+.car-track::-webkit-scrollbar{display:none}
+.car-track button{all:unset;cursor:zoom-in;flex:0 0 100%;scroll-snap-align:start;display:block;overflow:hidden}
+.car-track button:focus-visible{outline:3px solid var(--a3);outline-offset:-3px}
+.car-track img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block;transition:transform 700ms var(--ease)}
+@media (hover:hover){.card:hover .car-track img{transform:scale(1.04)}}
+.car-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;border:1px solid #ffffff30;background:var(--shade);backdrop-filter:blur(8px);color:#fff;cursor:pointer;display:grid;place-items:center;font-size:16px;opacity:0;transition:opacity 200ms ease}
+.car:hover .car-nav,.car-nav:focus-visible{opacity:1}
+@media (hover:none){.car-nav{opacity:.85}}
+.car-nav.p{left:10px}.car-nav.n{right:10px}
+.car-dots{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);display:flex;gap:5px;pointer-events:none;background:var(--shade);padding:5px 8px;border-radius:980px}
+.car-dots i{width:5px;height:5px;border-radius:50%;background:#ffffff70;transition:width 250ms var(--ease)}
+.car-dots i.on{background:#fff;width:14px;border-radius:3px}
+.car-n{position:absolute;right:10px;bottom:10px;font-family:var(--mono);font-size:11px;background:var(--shade);color:#fff;border-radius:980px;padding:3px 9px;pointer-events:none}
+.empty{text-align:center;color:var(--muted);padding:30px 0}
+
+/* tecnologías */
+.tech{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.tech .tile h4{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--accent);text-transform:uppercase;letter-spacing:.12em}
+.tech ul{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:16px}
+.tech li{padding-bottom:10px;border-bottom:1px solid var(--line)}
+.tech li:last-child{border:0;padding:0}
+.principles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:14px}
+.principles .tile h3{font-size:20px}
+.principles .tile .n{font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+/* contacto */
+.contact{text-align:center;position:relative}
+.contact::before{content:"";position:absolute;left:50%;top:40%;width:min(800px,90vw);height:400px;transform:translate(-50%,-50%);background:var(--grad);filter:blur(120px);opacity:.22;z-index:-1;border-radius:50%}
+.contact h2{font-size:clamp(40px,6.4vw,84px);font-weight:800;line-height:1;letter-spacing:-.05em}
+.contact p{font-size:20px;color:var(--muted);margin-top:20px}
+.card-contact{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px 22px;text-align:left;max-width:660px;margin:44px auto 0;border-radius:24px;padding:26px 28px;box-shadow:0 40px 80px -40px #000000c0}
+.card-contact .avatar{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;font-weight:800;font-size:22px;color:#fff;background:var(--grad);box-shadow:0 12px 30px -10px var(--a2)}
+.card-contact .who2{display:flex;flex-direction:column;min-width:0}
+.card-contact .who2 b{font-size:20px;letter-spacing:-.02em}
+.card-contact .who2 span{font-size:14px;color:var(--muted)}
+.card-contact .phone{display:flex;align-items:center;gap:10px}
+.card-contact .phone a{font-size:26px;font-weight:700;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums}
+.card-contact .copied{position:absolute;right:28px;bottom:8px;margin:0;font-size:13px;color:var(--ok)}
+.contact .ctas{display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+footer{border-top:1px solid var(--line);padding-block:26px 36px;font-size:13px;color:var(--muted)}
+footer .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* visor */
+.lb{position:fixed;inset:0;z-index:60;background:#02030aee;backdrop-filter:blur(10px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));opacity:1;transition:opacity 220ms ease}
+@starting-style{.lb{opacity:0}}
+.lb img{max-width:min(1280px,100%);max-height:76vh;border-radius:12px;box-shadow:0 40px 100px #000c,0 0 0 1px #ffffff1a}
+.lb .cap{color:#f4f6fb;font-size:15px;text-align:center;max-width:760px}
+.lb .cap span{color:#9aa3b8;font-family:var(--mono);font-size:12px;margin-left:8px}
+.lb .ctl{display:flex;gap:10px}
+.lb button{border:1px solid #ffffff26;background:#ffffff14;color:#fff;border-radius:12px;padding:10px 18px;font-size:14px;cursor:pointer;min-height:44px;transition:transform 160ms var(--ease),background 200ms ease}
+.lb button:hover{background:#ffffff26}
+.lb button:active{transform:scale(.97)}
+
+/* aparición al hacer scroll (contenido visible sin JS) */
+.js .reveal{opacity:0;transform:translateY(28px);transition:opacity 800ms var(--ease),transform 800ms var(--ease);transition-delay:var(--rd,0ms)}
+.js .reveal.inview{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}}
+
+@media (max-width:980px){
+  .wall{inset:22% -50% -20% -10%;opacity:.5;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 35%,#000 75%,transparent);mask-image:linear-gradient(180deg,transparent 0%,#000 35%,#000 75%,transparent)}
+  .floaty{display:none}
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .t-6,.t-4{grid-column:span 2}.t-3,.t-2{grid-column:span 1}
+  .tile.feature{flex-direction:column;align-items:stretch;padding:32px}
+  .mods{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tech,.principles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nav nav{display:none}
+}
+@media (max-width:620px){
+  body{font-size:16px}
+  .wall{inset:38% -80% -10% -40%;opacity:.38}
+  .hero{padding-block:120px 80px}
+  .stats div{padding:14px 18px}
+  .card-contact{grid-template-columns:auto 1fr}
+  .card-contact .phone{grid-column:1/-1}
+  .gal .lid::after{margin-inline:-14px}
+  .bento,.mods,.spot,.tech,.principles{grid-template-columns:1fr}
+  .t-6,.t-4,.t-3,.t-2{grid-column:span 1}
+  .tile{padding:24px;border-radius:20px}
+  .tile.feature{padding:24px}
+  section,.chapter{padding-block:80px}
+  .grid{grid-template-columns:1fr}
+  .thumbs button{width:76px}
+  .gal .lid{padding:7px 7px 10px;border-radius:14px 14px 4px 4px}
+  .gal-under{flex-direction:column;align-items:stretch}
+  .gal-ctl{justify-content:center}
+  .nav .pill{display:none}
+  .scrollcue{display:none}
+}
+</style>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <div class="bar">
+    <a class="logo" href="#inicio"><i aria-hidden="true">JR</i>Javier Romero</a>
+    <nav aria-label="Secciones">
+      <a href="#capacidades">Lo que hago</a>
+      <a href="#sistemas">Sistemas</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#tecnologias">Tecnologías</a>
+    </nav>
+    <div class="right">
+      <a class="pill" href="#contacto">Contacto</a>
+    </div>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="hero3d" id="hero3d">
+    <div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+    <div class="floor" aria-hidden="true"></div>
+    <div class="stage" aria-hidden="true">
+      <div class="wall"><div class="plane" id="plane"></div></div>
+    </div>
+    <div class="floaty f1" aria-hidden="true"><span class="dot" style="background:#4f8cff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v13c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-13M4.5 12c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8"/></svg></span><span>SQL Server <b><span class="live"></span> consultas en vivo</b></span></div>
+    <div class="floaty f2" aria-hidden="true"><span class="dot" style="background:#9b5cff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v4m0 10v4M3 12h4m10 0h4M6 6l2.5 2.5m7 7L18 18M6 18l2.5-2.5m7-7L18 6"/></svg></span><span>Agente de IA <b>cita su fuente</b></span></div>
+    <div class="floaty f3" aria-hidden="true"><span class="dot" style="background:#0ea5b7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10m6 10V4m6 16v-7m4 7H2"/></svg></span><span>Reportes <b>Excel · PDF · BI</b></span></div>
+    <div class="in hero">
+      <p class="badge fade" style="--dl:.05s"><b><span class="live"></span>Disponible</b>Panamá · proyectos a la medida</p>
+      <h1 id="h1">Software a la medida de cada <span class="grad">operación.</span></h1>
+      <p class="lead fade" style="--dl:.55s">Sistemas financieros, reportería, planillas, dashboards, apps y agentes de inteligencia artificial. Hechos para el trabajo de todos los días, conectados a los datos reales.</p>
+      <p class="who fade" style="--dl:.65s"><b>Javier Antonio Romero</b> · Experto en tecnología, inteligencia artificial, redes y servidores</p>
+      <div class="ctas fade" style="--dl:.75s">
+        <a class="pill" href="#sistemas">Ver los sistemas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+        <a class="pill ghost" href="#contacto">Contactar</a>
+      </div>
+      <div class="stats fade" style="--dl:.9s">
+        <div><strong id="stProj">0</strong><span>proyectos</span></div>
+        <div><strong id="stShots">0</strong><span>pantallas</span></div>
+        <div><strong id="stCat">0</strong><span>áreas</span></div>
+      </div>
+    </div>
+    <div class="scrollcue" aria-hidden="true"></div>
+  </div>
+
+  <div class="marquee" aria-hidden="true"><div class="mt" id="mq"></div></div>
+
+  <section id="capacidades">
+    <div class="in">
+      <div class="sec-title reveal">
+        <p class="eyebrow">01 · Lo que hago</p>
+        <h2>Entiendo el sistema. <span class="grad">Construyo lo que falta.</span></h2>
+        <p>Parto de lo que la empresa ya tiene: su sistema, su base de datos y sus procesos. Sobre eso armo las herramientas que el equipo necesita.</p>
+      </div>
+      <div class="bento" id="bento"></div>
+    </div>
+  </section>
+
+  <div id="sistemas"></div>
+  <div id="chapters"></div>
+
+  <section id="proyectos" class="band">
+    <div class="in">
+      <div class="sec-title reveal">
+        <p class="eyebrow">03 · Proyectos</p>
+        <h2>Todo lo que he <span class="grad">construido.</span></h2>
+        <p id="projLead">Sistemas, apps, dashboards, agentes de IA y sitios web.</p>
+      </div>
+      <div class="filters" id="filters" role="group" aria-label="Filtrar por área"></div>
+      <div class="searchwrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8"/></svg>
+      <input class="search" id="q" type="search" placeholder="Buscar proyecto o tecnología" aria-label="Buscar proyecto o tecnología"></div>
+      <div class="grid" id="grid"></div>
+      <p class="empty" id="empty" hidden>No hay proyectos con ese filtro.</p>
+    </div>
+  </section>
+
+  <section id="tecnologias">
+    <div class="in">
+      <div class="sec-title reveal">
+        <p class="eyebrow">04 · Tecnologías</p>
+        <h2>Las herramientas correctas <span class="grad">para cada caso.</span></h2>
+      </div>
+      <div class="tech">
+        <div class="tile reveal"><h4>Backend y datos</h4><ul><li>Node.js · Express</li><li>SQL Server</li><li>PHP · MySQL</li><li>Supabase</li><li>Python</li></ul></div>
+        <div class="tile reveal"><h4>Frontend y móvil</h4><ul><li>HTML · CSS · JavaScript</li><li>Chart.js · Three.js</li><li>Excel y PDF desde el navegador</li><li>Apps Android</li><li>Expo · React Native</li></ul></div>
+        <div class="tile reveal"><h4>Servidores y nube</h4><ul><li>IIS · iisnode</li><li>VMware · Active Directory</li><li>Ubuntu Server</li><li>Azure · Google Cloud · AWS</li><li>GitHub Actions · Vercel · Netlify</li></ul></div>
+        <div class="tile reveal"><h4>IA y automatización</h4><ul><li>Claude · Claude Code</li><li>OCR con Tesseract</li><li>Playwright</li><li>Microsoft 365 · Google Workspace</li><li>Telegram · WhatsApp · Discord</li></ul></div>
+      </div>
+      <div class="principles">
+        <div class="tile reveal"><span class="n">/01</span><h3>Datos en vivo</h3><p>Lo que viene de la base se consulta en el momento. Nada de cifras escritas a mano en la página.</p></div>
+        <div class="tile reveal"><span class="n">/02</span><h3>Cambios auditables</h3><p>Cada cambio se compara con el original: qué se agregó, qué se modificó y qué se quitó.</p></div>
+        <div class="tile reveal"><span class="n">/03</span><h3>Claves protegidas</h3><p>Las contraseñas no van en el código. Quedan encriptadas en la configuración del servidor.</p></div>
+        <div class="tile reveal"><span class="n">/04</span><h3>IA con reglas</h3><p>Los agentes no inventan datos, citan su fuente y no envían nada sin aprobación.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="in contact reveal">
+      <p class="eyebrow" style="justify-content:center">05 · Contacto</p>
+      <h2 style="margin-top:16px">¿Tienes un sistema que <span class="grad">necesita más?</span></h2>
+      <p>Cuéntame qué usa tu empresa y qué te falta. Lo revisamos juntos.</p>
+      <div class="card-contact">
+        <div class="avatar" aria-hidden="true">JR</div>
+        <div class="who2"><b>Javier Antonio Romero</b><span>Experto en tecnología, inteligencia artificial, redes y servidores · Panamá</span></div>
+        <div class="phone"><a href="tel:+50765992602" id="tel">6599-2602</a><button type="button" class="round copy" id="copyTel" aria-label="Copiar teléfono"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg></button></div>
+        <p class="copied" id="copied" aria-live="polite"></p>
+      </div>
+      <div class="ctas"><a class="pill" href="tel:+50765992602">Llamar ahora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><a class="pill ghost" href="#proyectos">Ver proyectos</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="in">
+    <span>Javier Antonio Romero · 2026</span>
+    <span>Las pantallas son de sistemas reales, mostradas con datos de ejemplo.</span>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Pantalla ampliada">
+  <img id="lbImg" alt="">
+  <div class="cap" id="lbCap"></div>
+  <div class="ctl">
+    <button type="button" id="lbPrev">‹ Anterior</button>
+    <button type="button" id="lbClose">Cerrar</button>
+    <button type="button" id="lbNext">Siguiente ›</button>
+  </div>
+</div>
+
+<script>
+const CATS = [{"id": "fin", "name": "Finanzas y seguros"}, {"id": "rep", "name": "Reportería y datos"}, {"id": "rrhh", "name": "Planilla y RR. HH."}, {"id": "inm", "name": "Bienes raíces y avalúos"}, {"id": "dash", "name": "Dashboards y productividad"}, {"id": "ia", "name": "Agentes de IA"}, {"id": "red", "name": "Infraestructura y red"}, {"id": "app", "name": "Apps y productos"}, {"id": "web", "name": "Sitios web"}];
+const P = [{"c": "fin", "t": "Sistema de Pólizas Financiadas", "f": 1, "d": "Sistema web para administrar pólizas financiadas: clientes, movimientos, registro de pagos y balance mensual.", "b": ["Importación masiva de balances desde dos plantillas de Excel", "Balance mensual validado contra una cifra objetivo", "Auditoría que exporta a Excel lo que cambió cada usuario"], "s": ["Node.js", "Express", "SQL Server", "IIS"], "i": [{"n": "shots7_pol__pol_dashboard", "c": "Panel principal: indicadores de pólizas activas, montos y accesos a cada módulo"}, {"n": "shots7_pol__pol_gestion_lista", "c": "Lista de pólizas con aseguradora, cliente, estado y saldos, con acciones para editar, renovar o cancelar"}, {"n": "shots7_pol__pol_gestion_editar", "c": "Formulario para editar los datos de una póliza"}, {"n": "shots7_pol__pol_gestion_balance", "c": "Balance mensual de pólizas dentro de Gestión: totales del mes y botones para generar, sincronizar y re-alinear"}, {"n": "shots7_pol__pol_balance_mensual", "c": "Balance mensual: importar Excel, consultar un mes y ver los totales"}, {"n": "shots7_pol__pol_balance_mensual_tabla", "c": "Detalle del balance del mes por póliza: saldo anterior, pagos, devoluciones y totales"}, {"n": "shots7_pol__pol_registro_pagos", "c": "Registro de pagos y movimientos: tipos de movimiento y cómo afectan los saldos"}, {"n": "shots7_pol__pol_registro_pagos_form", "c": "Registrar un pago: busca la póliza, muestra sus saldos y el historial de movimientos"}]}, {"c": "fin", "t": "Planilla y Detalle Colectivo de Vida", "d": "Planilla mensual del seguro de vida que se completa con datos del sistema de préstamos.", "b": ["Trae cédula, fecha de nacimiento y monto inicial en vivo", "Calcula la creación mensual de los préstamos sobre saldo", "Copia meses sin perder los ajustes manuales"], "s": ["Node.js", "SQL Server"], "i": [{"n": "pol_7_detalle_colectivo_vida", "c": "Detalle del colectivo de vida"}, {"n": "rep_planilla-vida", "c": "Planilla de vida por fecha"}, {"n": "rep_colectivo-vida", "c": "Detalle del colectivo de vida"}]}, {"c": "fin", "t": "Devoluciones por cancelación", "d": "Calcula cuánto seguro se devuelve cuando un préstamo se cancela antes de tiempo.", "b": ["Lee el monto con impuesto del sistema y calcula el monto sin impuesto", "Trae el plazo y la fecha de cancelación en vivo"], "s": ["JavaScript", "SQL Server"], "i": [{"n": "pol_11_devoluciones_cancelacion_colectivo", "c": "Cálculo de devoluciones por cancelación"}]}, {"c": "fin", "t": "Anexos de seguro · cartera migrada", "d": "Instancia propia del sistema para una cartera de préstamos comprada, con su conciliación contra contabilidad.", "b": ["Conecta tres bases de datos en servidores distintos", "Manejo no devengado conciliado con contabilidad"], "s": ["Node.js", "SQL Server"], "i": [{"n": "rep_anexos-seguro", "c": "Anexos de seguro"}, {"n": "rep_manejo-migrada", "c": "Manejo no devengado por cartera"}, {"n": "rep_verificacion-manejo", "c": "Verificación del manejo contra contabilidad"}]}, {"c": "fin", "t": "Calculadora de préstamos", "d": "Simulador de cuotas con los tres tipos de interés del sistema: sobre saldo, agregado y descontado. Versión web y app de Android.", "b": ["Tabla de amortización con gastos de cierre, notariales y escritura"], "s": ["HTML", "JavaScript", "Android"], "i": [{"n": "ph2_prest_a", "c": "App de Android: cálculo de la letra y tabla de pagos, en modo claro y oscuro"}, {"n": "art_calculadora", "c": ""}, {"n": "ph_prestamos_0", "c": ""}]}, {"c": "fin", "t": "Mesa de cartera", "d": "Tablero de cartera de consumo con datos de una financiera ficticia: calidad por tramo de mora, provisión y desglose por sucursal.", "b": ["Preguntas en lenguaje normal sobre la cartera", "Simulación de presupuesto y promesas de pago"], "s": ["JavaScript", "IA"], "i": [{"n": "art_mesa-cartera", "c": ""}, {"n": "art_mesa-cartera_t1", "c": ""}, {"n": "art_mesa-cartera_t2", "c": ""}, {"n": "art_mesa-cartera_t3", "c": ""}]}, {"c": "fin", "t": "Sistema de préstamos", "d": "Sistema de préstamos en HTML y JavaScript con inicio de sesión profesional.", "b": ["Validación de campos, bloqueo por intentos y recuperación de contraseña"], "s": ["HTML", "JavaScript"], "i": [{"n": "mock_sistema_prestamos", "c": "Pantalla de ejemplo con datos inventados: inicio de sesión"}]}, {"c": "rep", "t": "Constructor de reportes financieros", "f": 1, "d": "App web de reportería sobre la base del sistema financiero: reportes predefinidos, constructor visual, editor SQL, BI y asistente IA.", "b": ["Mega reportes con la misma lógica que el módulo de intereses", "Mapeo de campos y relaciones entre tablas", "Histórico, respaldo automático y descarga de todos los reportes"], "s": ["Node.js", "Express", "SQL Server", "IIS"], "i": [{"n": "rep_index_RP", "c": "Constructor visual de reportes"}, {"n": "shots7_rep__rep_esp_tarjetas", "c": "Catálogo de reportes predefinidos sobre la cartera de préstamos"}, {"n": "shots7_rep__rep_esp1_cartera", "c": "Reporte de cartera: préstamos con saldo, tasa, plazo y días de mora"}, {"n": "shots7_rep__rep_esp2_cobros", "c": "Reporte de cobros: letras vencidas y monto atrasado por cliente y cobrador"}, {"n": "shots7_rep__rep_esp7_clasificacion", "c": "Clasificación de la cartera por días de mora con su provisión"}, {"n": "shots7_rep__rep_esp11_garantias", "c": "Garantías de cada préstamo con su valor y cobertura"}, {"n": "shots7_rep__rep_dashboard", "c": "Dashboard ejecutivo con indicadores de la cartera"}, {"n": "shots7_rep__rep_dashboard_graficos", "c": "Gráficos del dashboard: distribución, top 10 y comparativo"}, {"n": "pla_sql", "c": "Editor SQL"}, {"n": "pla_mapeo", "c": "Mapeo de campos"}, {"n": "pla_relaciones", "c": "Relaciones entre tablas"}, {"n": "pla_bi_t5", "c": "Análisis de mora 30+"}, {"n": "pla_ia", "c": "Asistente IA sobre el reporte"}]}, {"c": "rep", "t": "Reportería especializada", "f": 1, "d": "Portal de reportería en tiempo real sobre el sistema financiero: cada módulo abre su propio reporte, con gestión histórica programada.", "b": ["Reportes predefinidos, histórico, comparación de anexos e intereses por mes", "Saldos, cobros, pagos adelantados, caja de seguro y manejo de cartera", "Conciliación de seguros con contabilidad y reporte regulatorio"], "s": ["Node.js", "SQL Server"], "i": [{"n": "shots7_rep__rep_menu", "c": "Menú principal de la reportería: módulos de consultas, cartera y seguros"}, {"n": "shots7_rep__rep_esp_tarjetas", "c": "Catálogo de reportes predefinidos sobre la cartera de préstamos"}, {"n": "shots7_rep__rep_esp1_cartera", "c": "Reporte de cartera: préstamos con saldo, tasa, plazo y días de mora"}, {"n": "shots7_rep__rep_esp2_cobros", "c": "Reporte de cobros: letras vencidas y monto atrasado por cliente y cobrador"}, {"n": "shots7_rep__rep_esp7_clasificacion", "c": "Clasificación de la cartera por días de mora con su provisión"}, {"n": "shots7_rep__rep_esp11_garantias", "c": "Garantías de cada préstamo con su valor y cobertura"}, {"n": "shots7_rep__rep_dashboard", "c": "Dashboard ejecutivo con indicadores de la cartera"}, {"n": "shots7_rep__rep_dashboard_graficos", "c": "Gráficos del dashboard: distribución, top 10 y comparativo"}]}, {"c": "rep", "t": "Reporte regulatorio de factores de riesgo", "d": "Genera solo el archivo que se envía al ente regulador, con datos en vivo.", "b": ["Clasifica por tipo de persona, garantía y producto", "Cada grupo cuadra contra el total de clientes"], "s": ["HTML", "JavaScript", "SQL Server"], "i": [{"n": "rep_reporte4-factores-riesgo", "c": "Reporte regulatorio"}]}, {"c": "rep", "t": "Informe semanal de cartera", "d": "Saldos de cartera con y sin intereses, créditos creados y abonos.", "b": ["Exporta a Excel una hoja por vista con su desglose"], "s": ["Node.js", "SQL Server", "Excel"], "i": [{"n": "rep_informe-semanal-cartera", "c": "Informe semanal de cartera"}]}, {"c": "rep", "t": "Revisión diaria de cartera y seguros", "d": "Saldos al corte por línea y pagos del período con seguros de vida y bien.", "b": ["Se corre por día con las cuentas contables"], "s": ["HTML", "JavaScript"], "i": [{"n": "rep_revision-diaria-seguros", "c": "Revisión diaria"}]}, {"c": "rep", "t": "Saldos de los préstamos", "d": "Réplica del reporte de saldos por sucursal, cartera y financiamiento, con saldo en vivo.", "b": ["Vista por sucursal, cartera normal y cartera migrada"], "s": ["Node.js", "SQL Server"], "i": [{"n": "rep_saldos-prestamos", "c": "Saldos de los préstamos"}]}, {"c": "rep", "t": "Seguros: del sistema a la contabilidad", "d": "Concilia lo que mandó el sistema de préstamos, lo que quedó en el mayor y el saldo de préstamos.", "b": ["Diferencias del mes por tipo de seguro"], "s": ["Node.js", "SQL Server"], "i": [{"n": "rep_seguros-contabilidad", "c": "Seguros a contabilidad"}]}, {"c": "rep", "t": "Cobro vs aplicación", "d": "Cuenta por cobrar de clientes: qué se cobró y qué día se reflejó.", "b": ["Verifica la fórmula y exporta a Excel"], "s": ["Node.js", "SQL Server"], "i": [{"n": "rep_cobro-aplicacion", "c": "Cobro contra aplicación"}]}, {"c": "rep", "t": "Pagos adelantados", "d": "Cobros, aplicaciones y pendientes de las cuentas de pagos adelantados.", "b": [], "s": ["Node.js", "SQL Server"], "i": [{"n": "rep_cuenta-ambas-ad", "c": "Pagos adelantados"}]}, {"c": "rep", "t": "Entrada de caja de seguro", "d": "Cobros de seguro de vida y bien por recibo, con el plan del seguro y lo pagado al corte.", "b": ["Filtros por sucursal, tipo y vista por pagaré"], "s": ["Node.js", "SQL Server"], "i": [{"n": "rep_entrada-caja-seguro", "c": "Entrada de caja de seguro"}]}, {"c": "rep", "t": "Documentación técnica del sistema", "d": "Documentación del sistema de reportería generada desde su propio código.", "b": ["140 endpoints, 273 consultas SQL y 29 reportes específicos"], "s": ["Node.js", "HTML"], "i": [{"n": "rep_documentacion-sistema", "c": "Documentación técnica generada del código"}]}, {"c": "rep", "t": "Tablero contable", "d": "Facturación, ITBMS, cobros y estados financieros en un tablero, con datos de ejemplo.", "b": ["Antigüedad de cuentas por cobrar", "Facturado contra cobrado por mes"], "s": ["JavaScript", "Chart.js"], "i": [{"n": "art_contabilidad-dashboards", "c": ""}, {"n": "art_contabilidad-dashboards_t1", "c": ""}, {"n": "art_contabilidad-dashboards_t2", "c": ""}]}, {"c": "rep", "t": "Boletín de informes", "d": "Módulo de solo lectura que replica los informes de un segundo sistema financiero.", "b": ["Incluye el reporte para el ente regulador"], "s": ["Node.js", "SQL Server"], "i": [{"n": "mock_boletin_informes", "c": "Pantalla de ejemplo con datos inventados: informe de morosidad por tramo"}]}, {"c": "rep", "t": "Motor de búsqueda que aprende", "d": "Asocia cédulas con nombres y direcciones y aprende solo con cada fuente nueva.", "b": ["Calcula la confianza según cuántas fuentes coinciden"], "s": ["PHP", "MySQL"], "i": [{"n": "mock_motor_busqueda", "c": "Pantalla de ejemplo con datos inventados: búsqueda por cédula con nivel de confianza y bitácora"}]}, {"c": "rrhh", "t": "Sistema de planilla de empleados", "f": 1, "d": "Planilla quincenal completa: colaboradores, asistencia, reloj biométrico, préstamos, vacaciones, liquidaciones y décimo tercer mes.", "b": ["Cálculo de Seguro Social, Seguro Educativo e ISR", "Reportes oficiales para Seguro Social y renta", "Cierre quincenal, respaldos y auditoría"], "s": ["Node.js", "SQL Server", "IIS"], "i": [{"n": "shots7_pla__01_inicio", "c": "Panel de inicio: nómina bruta, neto, retenciones y costo para la empresa de la quincena, con la asistencia del año"}, {"n": "shots7_pla__01_inicio_b", "c": "Ranking de colaboradores con más tardanzas, pausas y permisos, y la evolución anual de la planilla"}, {"n": "shots7_pla__02_colaboradores", "c": "Lista de colaboradores con cédula, cargo, salario, fecha de ingreso, antigüedad y edad"}, {"n": "shots7_pla__03_planilla", "c": "Planilla quincenal: salario, horas extras, Seguro Social, Seguro Educativo, ISR, descuentos y neto de cada colaborador"}, {"n": "shots7_pla__04_reloj", "c": "Reloj biométrico: marcaciones importadas y eventos detectados (tardanzas, pausas largas, horas extra)"}, {"n": "shots7_pla__04_reloj_b", "c": "Detalle de todos los eventos del reloj del mes con horario y minutos"}, {"n": "shots7_pla__05_asistencia", "c": "Asistencia del mes: cómo se calcula el descuento por minuto y resumen de eventos"}, {"n": "shots7_pla__05_asistencia_b", "c": "Pausas y almuerzos excedidos y horas extra, con el monto a descontar o pagar"}]}, {"c": "rrhh", "t": "Mi Quincena", "d": "App para repartir la quincena en sobres: renta, comida, transporte y ahorro.", "b": [], "s": ["HTML", "JavaScript"], "i": [{"n": "art_mi-quincena", "c": ""}]}, {"c": "inm", "t": "Módulo de bienes reposeídos", "d": "Control de propiedades recuperadas: cuadro de ventas, gestión de campo, documentos, alquileres y dashboard.", "b": ["Carga los Excel de activos, ventas y trazabilidad", "Contratos de alquiler y sus pagos"], "s": ["Node.js", "SQL Server"], "i": [{"n": "rep_bienes-reposeidos", "c": "Bienes reposeídos"}, {"n": "art_bienes-dashboard", "c": ""}]}, {"c": "inm", "t": "Lector de avalúos", "d": "Lee avalúos en PDF, también escaneados, con OCR y arma un resumen para gerencia.", "b": ["Verifica que los montos cuadren", "Estima el precio de venta y explica por qué"], "s": ["OCR", "PDF", "IA"], "i": [{"n": "art_lector-avaluos", "c": ""}]}, {"c": "inm", "t": "Panel de bienes raíces", "d": "Portafolio de propiedades con estatus, gestión de campo, alquileres, documentos y agente, con datos de ejemplo.", "b": ["Propuestas para la junta y reporte mensual"], "s": ["JavaScript", "IA"], "i": [{"n": "art_agente-real-estate", "c": ""}, {"n": "art_agente-real-estate_t1", "c": ""}, {"n": "art_agente-real-estate_t2", "c": ""}, {"n": "art_agente-real-estate_t3", "c": ""}, {"n": "art_agente-real-estate_t4", "c": ""}, {"n": "art_real-estate-ia", "c": ""}, {"n": "art_real-estate-ia_t1", "c": ""}, {"n": "art_real-estate-ia_t2", "c": ""}, {"n": "art_real-estate-ia_t3", "c": ""}]}, {"c": "inm", "t": "Agente de leads inmobiliarios", "d": "Bandeja de leads que llegan por WhatsApp e Instagram, con puntaje, agenda y métricas.", "b": ["El agente responde y califica cada lead"], "s": ["JavaScript", "IA"], "i": [{"n": "art_agente-leads", "c": ""}, {"n": "art_agente-leads_t1", "c": ""}, {"n": "art_agente-leads_t2", "c": ""}, {"n": "art_agente-leads_t3", "c": ""}, {"n": "art_agente-leads_t4", "c": ""}]}, {"c": "inm", "t": "Panel inmobiliario", "d": "Panel interno de inventario, ventas, faltantes y precios de propiedades.", "b": [], "s": ["JavaScript"], "i": [{"n": "art_c4-admin", "c": ""}, {"n": "art_c4-admin_t1", "c": ""}, {"n": "art_c4-admin_t2", "c": ""}, {"n": "art_c4-admin_t3", "c": ""}, {"n": "art_c4-admin_t4", "c": ""}]}, {"c": "inm", "t": "Anteproyecto residencial", "d": "Anteproyecto sobre 5,000 m²: lotificación, plantas, fachadas y cuadro de áreas.", "b": [], "s": ["SVG", "JavaScript"], "i": [{"n": "art_anteproyecto-3d", "c": ""}, {"n": "art_anteproyecto-3d_t1", "c": ""}, {"n": "art_anteproyecto-3d_t2", "c": ""}, {"n": "art_anteproyecto-3d_t3", "c": ""}, {"n": "art_anteproyecto-3d_t4", "c": ""}]}, {"c": "inm", "t": "Bitácora de planos", "d": "Control de versiones de planos por proyecto, con búsqueda en correos y PDF.", "b": [], "s": ["JavaScript"], "i": [{"n": "art_bitacora-planos", "c": ""}, {"n": "art_bitacora-planos_t1", "c": ""}, {"n": "art_bitacora-planos_t2", "c": ""}]}, {"c": "inm", "t": "Calcar forma de terreno", "d": "Dibuja la forma de un terreno a partir de una foto o un plano.", "b": [], "s": ["Canvas", "JavaScript"], "i": [{"n": "art_calcar-terreno", "c": ""}]}, {"c": "inm", "t": "Seguimiento de prospectos", "d": "Registro de clientes interesados en terrenos y lotes, con estado y recordatorios de llamada.", "b": [], "s": ["JavaScript"], "i": [{"n": "art_registro-prospectos", "c": ""}]}, {"c": "dash", "t": "Dashboard ejecutivo", "d": "Resumen ejecutivo del negocio con carga de archivos e historial.", "b": ["Caja consolidada, desembolsos, metas y morosidad", "Colocaciones, ruta de vendedores y control de combustible", "Constructor de reportes e historial de cargas"], "s": ["JavaScript", "Node.js", "SQL Server"], "i": [{"n": "rapidash", "c": ""}, {"n": "rapidash_00", "c": ""}, {"n": "rapidash_01", "c": ""}, {"n": "rapidash_03", "c": ""}, {"n": "rapidash_04", "c": ""}, {"n": "rapidash_06", "c": ""}, {"n": "rapidash_07", "c": ""}, {"n": "rapidash_08", "c": ""}, {"n": "rapidash_09", "c": ""}, {"n": "rapidash_11", "c": ""}]}, {"c": "dash", "t": "Centro de Mando", "d": "Panel personal que junta agenda, correo, tareas y metas, conectado a Microsoft 365.", "b": ["Informes automáticos de mañana, tarde y semana", "Radar de vencimientos"], "s": ["Claude", "Microsoft 365"], "i": [{"n": "art_centro-de-mando", "c": ""}, {"n": "art_centro-de-mando_t1", "c": ""}, {"n": "art_centro-de-mando_t2", "c": ""}, {"n": "art_centro-de-mando_t3", "c": ""}]}, {"c": "dash", "t": "Bitácora Ejecutiva", "d": "Tareas, asignaciones, notas y obstáculos del equipo, en tablero y calendario.", "b": [], "s": ["JavaScript", "Apps Script"], "i": [{"n": "art_bitacora-ejecutiva", "c": ""}, {"n": "art_bitacora-ejecutiva_t1", "c": ""}]}, {"c": "dash", "t": "Tablero de notas", "d": "Notas, acuerdos, pendientes y recordatorios del equipo en columnas.", "b": ["Convierte una nota en tarea"], "s": ["JavaScript", "Apps Script"], "i": [{"n": "art_tablero-notas", "c": ""}, {"n": "art_tablero-notas_t1", "c": ""}]}, {"c": "dash", "t": "Pulso Comercial", "d": "Ventas, márgenes, gastos e inventario en un tablero, con datos de ejemplo.", "b": [], "s": ["JavaScript", "Chart.js"], "i": [{"n": "art_pulso-comercial", "c": ""}, {"n": "art_pulso-comercial_t1", "c": ""}]}, {"c": "dash", "t": "Dashboard de ventas", "d": "Ventas, ganancia, margen y gastos por categoría, con datos de ejemplo.", "b": [], "s": ["JavaScript", "Chart.js"], "i": [{"n": "art_dashboard-ejecutivo", "c": ""}]}, {"c": "dash", "t": "Seguimiento de tareas", "d": "Tablero de tareas del equipo con acceso por solicitud.", "b": [], "s": ["JavaScript"], "i": [{"n": "art_seguimiento-tareas", "c": ""}]}, {"c": "dash", "t": "Centro documental", "d": "Bandeja que convierte PDF y escaneos en texto y los clasifica en avalúos, contratos, bienes y pólizas. También como app de Android.", "b": [], "s": ["OCR", "JavaScript", "Android"], "i": [{"n": "art_centro-documental", "c": ""}, {"n": "ph_centrodoc_0", "c": ""}]}, {"c": "dash", "t": "Drive interno de documentos", "d": "Dashboard tipo drive sobre OneDrive y SharePoint, con lectura de avalúos escaneados.", "b": [], "s": ["Microsoft 365", "OCR"], "i": [{"n": "art_documentacion-ocr", "c": "Mi unidad: archivos de OneDrive y SharePoint con indicadores (datos de ejemplo)"}, {"n": "art_documentacion-ocr_t1", "c": "Carpeta de avalúos"}, {"n": "art_documentacion-ocr_t2", "c": "Archivos recientes con filtro por tipo"}, {"n": "art_documentacion-ocr_t3", "c": "Avalúos leídos con OCR: finca, propietario, áreas y valores"}]}, {"c": "dash", "t": "Alquiler de equipos", "d": "Centro de operaciones con mapa del patio, equipos en renta, rutas y servicios del día.", "b": [], "s": ["JavaScript", "SVG"], "i": [{"n": "art_renta-equipos", "c": ""}, {"n": "art_renta-equipos_t1", "c": ""}]}, {"c": "ia", "t": "Agente legal", "d": "Asistente para el área legal: due diligence, redacción de contratos con modelo aprobado y cierre de procesos.", "b": ["Revisa el contrato contra el modelo y avisa lo que cambió"], "s": ["Claude", "OCR"], "i": [{"n": "art_agente-legal-pro", "c": ""}, {"n": "art_redaccion-contratos", "c": ""}, {"n": "art_cierre-procesos", "c": ""}, {"n": "art_cierre-procesos_t1", "c": ""}]}, {"c": "ia", "t": "Centro de IA por áreas", "d": "Herramientas de IA para Legal, Contabilidad, Administración, Inversiones y Real Estate, con datos de ejemplo.", "b": [], "s": ["Claude", "JavaScript"], "i": [{"n": "art_centro-ia", "c": ""}, {"n": "art_centro-ia_t1", "c": ""}, {"n": "art_centro-ia_t2", "c": ""}, {"n": "art_centro-ia_t3", "c": ""}, {"n": "art_centro-ia_t4", "c": ""}, {"n": "art_administracion-ia", "c": ""}, {"n": "art_administracion-ia_t1", "c": ""}, {"n": "art_administracion-ia_t2", "c": ""}, {"n": "art_inversiones-ia", "c": ""}, {"n": "art_inversiones-ia_t1", "c": ""}, {"n": "art_inversiones-ia_t2", "c": ""}]}, {"c": "ia", "t": "Agencia de agentes", "d": "Más de 160 especialistas de IA en español, adaptados a Panamá.", "b": [], "s": ["Claude"], "i": [{"n": "art_agencia-agentes", "c": ""}, {"n": "art_agencia-agentes_t1", "c": ""}]}, {"c": "ia", "t": "Agentes de carpetas de red", "d": "Dos agentes, uno para Contabilidad y otro para Operaciones, que leen las carpetas compartidas y responden preguntas.", "b": ["Servidor local con instalador MSI"], "s": ["Claude", "Node.js"], "i": [{"n": "art_agente-contabilidad_chat", "c": "Agente de la unidad de Contabilidad: totales exactos sobre los Excel (datos de ejemplo)"}, {"n": "art_agente-operaciones_chat", "c": "Agente de la unidad de Operaciones: tabla de cheques y revisión de montos en letras"}, {"n": "art_agente-contabilidad", "c": "Explorador de la unidad y preguntas sugeridas"}, {"n": "art_agente-operaciones", "c": "Unidad de Operaciones conectada"}]}, {"c": "ia", "t": "Agente de WhatsApp", "d": "Atiende clientes por WhatsApp las 24 horas: responde dudas, precalifica y agenda citas.", "b": [], "s": ["WhatsApp", "IA"], "i": [{"n": "art_agente-whatsapp", "c": ""}]}, {"c": "ia", "t": "Agente de portales", "d": "Entra solo a una lista de portales, inicia sesión y descarga todo lo descargable.", "b": ["Corre en la nube y lee con OCR lo descargado"], "s": ["Playwright", "Supabase", "GitHub Actions"], "i": [{"n": "art_agente-portales-ocr", "c": ""}]}, {"c": "ia", "t": "Jarvis", "d": "Asistente personal por voz con Claude Code: métricas, agenda, vencimientos y rutinas en una sola pantalla.", "b": [], "s": ["Claude Code", "Microsoft 365", "Voz"], "i": [{"n": "jarvis_panel", "c": "Panel principal: métricas, agenda, vencimientos, telemetría y rutinas"}]}, {"c": "ia", "t": "Agente todo en uno", "d": "Un solo agente que hace de asistente ejecutivo, técnico de TI y apoyo operativo.", "b": ["No envía nada sin aprobación y no toca producción"], "s": ["Claude", "Microsoft 365"], "i": [{"n": "mock_agente_todo", "c": "Pantalla de ejemplo con datos inventados: conversación, herramientas conectadas y reglas"}]}, {"c": "red", "t": "Centinel", "f": 1, "d": "Agente que se instala en cada computadora y reporta a un panel web: equipos, actividad en vivo, seguridad, navegación, auditoría, red, ciberseguridad y antirrobo.", "b": ["Instalador .exe y despliegue por Active Directory", "Panel con inicio de sesión sobre Supabase"], "s": ["Python", "Supabase", "PowerShell"], "i": [{"n": "art_centinel", "c": "Resumen de equipos"}, {"n": "art_centinel_t1", "c": "Equipos"}, {"n": "art_centinel_t2", "c": "Actividad en vivo"}, {"n": "art_centinel_t3", "c": "Seguridad"}, {"n": "art_centinel_t4", "c": "Navegación"}, {"n": "art_centinel_t5", "c": "Auditoría"}, {"n": "art_centinel_t6", "c": "Red"}, {"n": "art_centinel_t7", "c": "Ciberseguridad"}]}, {"c": "red", "t": "Monitor de servidores", "d": "Inventario y monitoreo de servidores Ubuntu con un agente que reporta su estado.", "b": [], "s": ["Node.js", "Supabase", "Ubuntu"], "i": [{"n": "mock_monitor_servidores", "c": "Pantalla de ejemplo con datos inventados: servidores Ubuntu con CPU, memoria, disco y último latido"}]}, {"c": "red", "t": "Analizador de tráfico web", "d": "Registra las páginas visitadas y las IP de los equipos de la red, para auditoría.", "b": [], "s": ["Redes", "Firewall"], "i": [{"n": "mock_analizador_trafico", "c": "Pantalla de ejemplo con datos inventados: sitios más visitados y registro por IP y equipo"}]}, {"c": "app", "t": "ParkSmart Pro", "d": "Sistema de gestión de parqueo: entradas, salidas, cobro por tarifa, mapa de espacios en vivo, abonados, caja y reportes.", "b": ["Roles de administrador, operador y cajero", "Exportación a Excel y PDF"], "s": ["React", "TypeScript", "Node.js", "Prisma"], "i": [{"n": "park_dashboard", "c": "Dashboard: ingresos del día y del mes, ocupación y tipos de vehículo"}, {"n": "park_mapa", "c": "Mapa de espacios en vivo por zona"}, {"n": "park_dashboard_b", "c": "Afluencia, estado en vivo y últimas entradas"}, {"n": "park_entrada", "c": "Entrada de vehículo con asignación automática de espacio"}, {"n": "park_salida", "c": "Salida y cobro de los vehículos en el parqueo"}, {"n": "park_mapa_b", "c": "Zonas de motos y VIP en el mapa"}, {"n": "park_tarifas", "c": "Tarifas por hora, fracción y día, con tiempo de gracia"}, {"n": "park_clientes", "c": "Clientes y abonados con su membresía"}]}, {"c": "app", "t": "CRM hotelero", "f": 1, "d": "CRM para hoteles hecho con Claude Code: reservas, planning, huéspedes, habitaciones, tareas, marketing, reseñas y reportes.", "b": ["Ocupación, ADR y RevPAR en el inicio", "Planning tipo Gantt y tareas en kanban", "Registro y acceso con código QR, permisos por rol"], "s": ["Node.js", "JavaScript", "Claude Code"], "i": [{"n": "crm_inicio", "c": "Inicio: ocupación, ADR y RevPAR"}, {"n": "crm_reservas", "c": "Reservas"}, {"n": "crm_planning", "c": "Planning por habitación"}, {"n": "crm_huespedes", "c": "Huéspedes"}, {"n": "crm_habitaciones", "c": "Habitaciones por piso"}, {"n": "crm_tareas", "c": "Tareas en tablero"}, {"n": "crm_marketing", "c": "Campañas de marketing"}, {"n": "crm_resenas", "c": "Reseñas"}]}, {"c": "app", "t": "CRM de ovulación", "d": "CRM web local para registrar clientas y ver su calendario de ovulación estimado. Todo funciona en la computadora: no hay nube ni cuentas.", "b": ["Calendario por clienta y agenda general", "Aprende de las ovulaciones confirmadas", "Avisa atrasos y clientas en ventana fértil"], "s": ["Node.js", "JavaScript", "HTML", "CSS"], "i": [{"n": "ovu_clientas", "c": "Clientas con su fase de hoy y próxima ventana fértil"}, {"n": "ovu_ficha", "c": "Ficha: fase actual, ovulación estimada, ciclo promedio y confianza"}, {"n": "ovu_agenda", "c": "Agenda con todas las clientas"}, {"n": "ovu_ficha2", "c": "Calendario del ciclo, menstruaciones registradas y datos de la clienta"}, {"n": "ovu_fertiles", "c": "Pestaña de clientas fértiles hoy"}, {"n": "ovu_nueva", "c": "Registro de nueva clienta"}]}, {"c": "app", "t": "Pulso", "d": "App de salud: retos diarios, calorías y hábitos, con coach.", "b": [], "s": ["Android", "Supabase"], "i": [{"n": "art_pulso-demo", "c": ""}]}, {"c": "app", "t": "Temblor", "d": "Alerta sísmica en tiempo real con mapa para seis países de la región.", "b": ["Simulación de alerta temprana"], "s": ["JavaScript", "Discord"], "i": [{"n": "art_temblor", "c": ""}]}, {"c": "app", "t": "Silueta", "d": "Seguimiento de medidas corporales: grasa, IMC y cintura, con escaneo. Web y app de Android.", "b": [], "s": ["JavaScript", "Android"], "i": [{"n": "art_silueta", "c": ""}, {"n": "ph_silueta_0", "c": ""}]}, {"c": "app", "t": "EstudiaScan", "d": "App de Android para estudiar sin conexión: mazos de tarjetas con repaso diario, escáner de páginas a PDF y lector y creador de códigos QR.", "b": [], "s": ["JavaScript", "Android"], "i": [{"n": "ph2_es_a", "c": "Inicio, mazos y detalle de un mazo"}, {"n": "ph2_es_b", "c": "Repaso, lector y creador QR, y escáner a PDF"}]}, {"c": "app", "t": "Socio", "d": "App todo en uno para pequeños negocios: agenda, me deben, costos, mi quincena y junta, con cuenta por cliente.", "b": ["Datos guardados en Supabase", "App de Android y web"], "s": ["JavaScript", "Supabase", "Android"], "i": [{"n": "ph2_socio_a", "c": "Inicio con el resumen del día y las herramientas"}, {"n": "ph2_socio_b", "c": "Mi Quincena, Turno y Mi Junta"}, {"n": "ph_socio_0", "c": ""}, {"n": "ph_socio_1", "c": ""}]}, {"c": "app", "t": "Mesa de análisis", "d": "Análisis de acciones y cripto por estructura de mercado, con simulador.", "b": [], "s": ["JavaScript"], "i": [{"n": "art_mesa-analisis", "c": ""}, {"n": "art_mesa-analisis_t1", "c": ""}, {"n": "art_mesa-analisis_t2", "c": ""}, {"n": "art_mesa-analisis_t3", "c": ""}]}, {"c": "app", "t": "Pulso de mercado", "d": "Acciones más negociadas, mapa del mercado y señales, con bot de Telegram.", "b": [], "s": ["JavaScript", "Telegram"], "i": [{"n": "art_pulso-mercado", "c": ""}, {"n": "art_pulso-mercado_t1", "c": ""}, {"n": "art_pulso-mercado_t2", "c": ""}]}, {"c": "app", "t": "Gastos al toque", "d": "Registro de gastos con presupuesto por categoría y proyección del mes.", "b": [], "s": ["Apps Script", "Google Sheets"], "i": [{"n": "art_gastos-al-toque", "c": ""}]}, {"c": "app", "t": "Fábrica de Micro Apps", "d": "Kit para crear y vender micro apps: ideas, marca, app, landing, correos y números.", "b": [], "s": ["HTML", "JavaScript"], "i": [{"n": "art_fabrica-microapps", "c": ""}, {"n": "art_fabrica-microapps_t1", "c": ""}, {"n": "art_fabrica-microapps_t2", "c": ""}, {"n": "art_fabrica-microapps_t3", "c": ""}, {"n": "art_fabrica-microapps_t4", "c": ""}]}, {"c": "app", "t": "Dividir la cuenta", "d": "Reparte la cuenta entre amigos según lo que pidió cada uno.", "b": [], "s": ["HTML", "JavaScript"], "i": [{"n": "art_dividir-cuenta", "c": ""}, {"n": "art_dividir-cuenta_t1", "c": ""}, {"n": "art_dividir-cuenta_t2", "c": ""}, {"n": "art_dividir-cuenta_t3", "c": ""}]}, {"c": "app", "t": "MeDebe", "d": "Anota quién te debe, cuánto y cuándo, y recuérdaselo por WhatsApp.", "b": [], "s": ["HTML", "JavaScript"], "i": [{"n": "art_medebe", "c": ""}]}, {"c": "app", "t": "Mi Costo", "d": "Calcula cuánto cuesta cada plato y a cuánto venderlo.", "b": [], "s": ["HTML", "JavaScript"], "i": [{"n": "art_mi-costo", "c": ""}]}, {"c": "app", "t": "Mi Junta", "d": "Lleva una junta o san: aportes, turnos y a quién le toca cobrar.", "b": [], "s": ["HTML", "JavaScript"], "i": [{"n": "art_mi-junta", "c": ""}]}, {"c": "app", "t": "Turno", "d": "Agenda de citas para barberos, manicuristas y estilistas: el profesional configura sus servicios y su horario, y comparte un link de reservas; el cliente reserva sin descargar nada.", "b": ["App del profesional: hoy, agenda, clientes y ganancias", "Página pública de reservas y recordatorio por WhatsApp", "APK propio en Android y app web instalable en iPhone"], "s": ["Expo", "React Native", "Supabase"], "i": [{"n": "art_turno", "c": ""}, {"n": "art_reservas", "c": ""}]}, {"c": "app", "t": "Reto 30", "d": "Reto de 30 días con hábitos diarios.", "b": [], "s": ["HTML", "JavaScript"], "i": [{"n": "art_reto-30", "c": ""}]}, {"c": "app", "t": "Rueda de archivos", "d": "Convierte, comprime y ordena archivos arrastrándolos a una rueda.", "b": [], "s": ["JavaScript"], "i": [{"n": "art_rueda-archivos", "c": ""}, {"n": "rueda_sel", "c": ""}, {"n": "rueda_wheel", "c": ""}, {"n": "rueda_drag2", "c": ""}]}, {"c": "app", "t": "Animaciones con código", "d": "Videos explicativos animados hechos con código.", "b": [], "s": ["JavaScript"], "i": [{"n": "art_motor-harness", "c": ""}]}, {"c": "app", "t": "Bot de trading en Solana", "d": "Bot autónomo que busca oportunidades en memecoins, con modo simulación y modo real.", "b": [], "s": ["Node.js", "Jupiter"], "i": [{"n": "mock_solana_bot", "c": "Pantalla de ejemplo con datos inventados: panel del bot en modo simulación, señales y posiciones"}]}, {"c": "app", "t": "Editor de fotos propio", "d": "Versión mejorada de un editor de imágenes de código abierto.", "b": [], "s": ["JavaScript"], "i": [{"n": "mock_editor_fotos", "c": "Pantalla de ejemplo con datos inventados: lienzo, herramientas, ajustes y capas"}]}, {"c": "web", "t": "Nexo CRM", "d": "Página de producto de un CRM con inteligencia artificial para equipos de marketing y ventas: pipeline visual, automatizaciones, bandeja omnicanal y analítica predictiva.", "b": ["Modo claro y oscuro", "Planes y precios con cambio mensual o anual", "Preguntas frecuentes y registro"], "s": ["HTML", "CSS", "JavaScript"], "i": [{"n": "nexo_hero", "c": "Portada con el panel del CRM"}, {"n": "nexo_hero_d", "c": "La misma portada en modo oscuro"}, {"n": "nexo_funciones", "c": "Pipeline visual y copiloto de IA"}, {"n": "nexo_ia_d", "c": "Asistente de IA que responde con acciones"}, {"n": "nexo_equipos", "c": "Funciones para marketing, ventas y atención"}, {"n": "nexo_integraciones", "c": "Integraciones"}, {"n": "nexo_precios", "c": "Planes y precios"}]}, {"c": "web", "t": "Portal de propiedades", "d": "Sitio de propiedades, oportunidades de inversión y negocios, con buscador.", "b": [], "s": ["HTML", "CSS", "JavaScript"], "i": [{"n": "art_propiedades-web", "c": ""}, {"n": "art_propiedades-web_t1", "c": ""}]}, {"c": "web", "t": "Sitio inmobiliario", "d": "Sitio para cotizar y comprar vivienda, con catálogo y buscador.", "b": [], "s": ["HTML", "CSS", "JavaScript"], "i": [{"n": "art_c4-web", "c": ""}]}, {"c": "web", "t": "Portal de corredores", "d": "Portal para corredores con propiedades destacadas, niveles y premios por ventas cerradas.", "b": [], "s": ["HTML", "JavaScript"], "i": [{"n": "art_portal-corredores", "c": ""}, {"n": "art_portal-corredores_t1", "c": ""}]}, {"c": "web", "t": "Sitio de autos", "d": "Sitio de una marca de autos con modelos en 3D que se giran y se pintan del color que elijas.", "b": ["Tres modelos: sedán, SUV y compacto"], "s": ["Three.js", "JavaScript"], "i": [{"n": "autos_sedan_0", "c": ""}, {"n": "autos_sedan_3", "c": ""}, {"n": "autos_suv_1", "c": ""}, {"n": "autos_suv_2", "c": ""}, {"n": "autos_compacto_0", "c": ""}, {"n": "autos_compacto_4", "c": ""}]}];
+const SYS = [{"id": "polizas", "eyebrow": "Seguros", "nombre": "Sistema de Pólizas Financiadas", "resumen": "Administra las pólizas que se financian junto a los préstamos: registro, pagos, balance mensual, colectivo de vida, devoluciones y auditoría de cada cambio.", "cifras": [{"valor": "24", "etiqueta": "pantallas"}, {"valor": "5", "etiqueta": "tipos de movimiento"}, {"valor": "3", "etiqueta": "vistas del informe de seguros"}, {"valor": "100 %", "etiqueta": "cambios auditados"}], "modulos": [{"nombre": "Registro de pólizas", "funciones": ["Pólizas nuevas y renovaciones", "Datos del cliente y de la garantía", "Pólizas por vencer en los próximos 30 días"]}, {"nombre": "Gestión de pólizas", "funciones": ["Crear, editar y administrar pólizas", "Pestaña de balance por cliente", "Agregar clientes al balance del mes"]}, {"nombre": "Registro de pagos y movimientos", "funciones": ["Pagos, creaciones y devoluciones", "Cartas de cancelación", "Préstamos declarados en pérdida", "Importación masiva desde Excel"]}, {"nombre": "Balance mensual de pólizas", "funciones": ["Saldo anterior, pagos, devoluciones, pérdidas y creaciones", "Edición en la celda con guardado automático", "Copia de un mes a otro"]}, {"nombre": "Detalle colectivo de vida", "funciones": ["Préstamos del colectivo por mes", "Datos del cliente traídos del sistema core", "Planilla de vida día a día"]}, {"nombre": "Planilla de vida", "funciones": ["Tarifas del colectivo por edad", "Prima según saldo de capital", "Registros manuales por mes"]}, {"nombre": "Devoluciones por cancelación", "funciones": ["Toma el colectivo y lo verifica con el sistema core", "Calcula la devolución con y sin impuesto", "Hoja de devolución lista para imprimir"]}, {"nombre": "Pólizas pagadas por clientes", "funciones": ["Activas, canceladas y resumen por año", "Carga del Excel de auditoría", "Registro manual de pólizas"]}, {"nombre": "Informe consolidado de seguros", "funciones": ["Monto póliza y monto financiado", "Pagos del mes y duplicados", "Desglose por fecha"]}, {"nombre": "Informes por aseguradora", "funciones": ["Pagos reales", "Pagos según calendario", "Exportación a Excel"]}, {"nombre": "Reporte de renovaciones", "funciones": ["Pólizas que vencen en 7, 15 y 30 días", "Filtros por aseguradora y estado", "Exportación a Excel"]}, {"nombre": "Reportes", "funciones": ["Reporte completo", "Balance de pólizas", "Seguro ganado", "Histórico por año"]}, {"nombre": "Cancelación y cancelados", "funciones": ["Cancelar una póliza con su motivo", "Reporte de pólizas canceladas"]}, {"nombre": "Detalle y movimientos de una póliza", "funciones": ["Buscar por póliza, pagaré, cliente o cédula", "Resumen de movimientos", "Vista previa en PDF"]}, {"nombre": "Memos", "funciones": ["Memos con líneas de detalle", "Firmas"]}, {"nombre": "Importación inteligente", "funciones": ["Detecta las columnas del Excel", "Vista previa antes de importar"]}, {"nombre": "Usuarios y permisos", "funciones": ["Usuarios con permisos por pantalla", "Cambio de contraseña", "Sesión que vence a las 12 horas"]}, {"nombre": "Auditoría", "funciones": ["Bitácora de cada cambio por usuario", "Filtros por fecha, módulo y acción", "Exportación a Excel"]}], "flujo": ["El usuario registra pólizas y movimientos, o los importa desde Excel", "El sistema completa los datos del préstamo desde el sistema core", "Calcula balances, primas y devoluciones del mes", "Entrega informes por aseguradora, balance y reportes en Excel", "Cada cambio queda en la bitácora de auditoría"], "tecnologias": ["Node.js", "Express", "SQL Server", "IIS · iisnode", "Excel", "PDF", "Claves encriptadas"], "i": [{"n": "shots7_pol__pol_dashboard", "c": "Panel principal: indicadores de pólizas activas, montos y accesos a cada módulo"}, {"n": "shots7_pol__pol_gestion_lista", "c": "Lista de pólizas con aseguradora, cliente, estado y saldos, con acciones para editar, renovar o cancelar"}, {"n": "shots7_pol__pol_gestion_editar", "c": "Formulario para editar los datos de una póliza"}, {"n": "shots7_pol__pol_gestion_balance", "c": "Balance mensual de pólizas dentro de Gestión: totales del mes y botones para generar, sincronizar y re-alinear"}, {"n": "shots7_pol__pol_balance_mensual", "c": "Balance mensual: importar Excel, consultar un mes y ver los totales"}, {"n": "shots7_pol__pol_balance_mensual_tabla", "c": "Detalle del balance del mes por póliza: saldo anterior, pagos, devoluciones y totales"}, {"n": "shots7_pol__pol_registro_pagos", "c": "Registro de pagos y movimientos: tipos de movimiento y cómo afectan los saldos"}, {"n": "shots7_pol__pol_registro_pagos_form", "c": "Registrar un pago: busca la póliza, muestra sus saldos y el historial de movimientos"}, {"n": "shots7_pol__pol_clientes_activas", "c": "Pólizas pagadas por clientes: resumen del mes y lista de pólizas activas"}, {"n": "shots7_pol__pol_clientes_resumen", "c": "Resumen por año de las pólizas pagadas por clientes, mes a mes"}, {"n": "shots7_pol__pol_colectivo_vida_tabla", "c": "Detalle del colectivo de vida: préstamos por sección con saldos y pagos por planilla"}, {"n": "shots7_pol__pol_devoluciones_colectivo", "c": "Cálculo de devoluciones del seguro de vida al cancelar un préstamo antes de tiempo"}, {"n": "shots7_pol__pol_devoluciones_tabla", "c": "Préstamos del colectivo verificados contra el sistema central, con fechas y estado de cancelación"}, {"n": "shots7_pol__pol_pagos_aseguradoras", "c": "Informe de pagos a aseguradoras: pagos realizados y pendientes por póliza"}, {"n": "shots7_pol__pol_renovaciones", "c": "Reporte de renovaciones: pólizas vencidas y por vencer, con totales"}, {"n": "shots7_pol__pol_renovaciones_tabla", "c": "Lista de pólizas por vencer con alertas según los días que faltan"}, {"n": "shots7_pol__pol_informe_seguros_tabla", "c": "Informe consolidado de seguros: monto, pagado y pendiente por aseguradora"}, {"n": "shots7_pol__pol_cancelados", "c": "Reporte de pólizas canceladas con motivo, saldo neto y cierre"}, {"n": "shots7_pol__pol_reportes_preview", "c": "Reporte completo de pólizas con montos financiados, prima y abono"}, {"n": "shots7_pol__pol_detalle_poliza", "c": "Detalle de pólizas: búsqueda y archivo PDF de cada póliza"}, {"n": "shots7_pol__pol_detalle_poliza_ver", "c": "Ficha de una póliza con datos del cliente e información financiera"}, {"n": "shots7_pol__pol_auditoria", "c": "Auditoría: quién hizo qué y cuándo en el sistema"}, {"n": "shots7_pol__pol_usuarios", "c": "Gestión de usuarios con rol, estado y último acceso"}, {"n": "shots7_pol__pol_usuarios_permisos", "c": "Permisos por usuario: a qué pantallas tiene acceso"}, {"n": "shots7_pol__pol_aseguradoras", "c": "Mantenimiento de aseguradoras"}, {"n": "shots7_pol__pol_aseguradoras_contactos", "c": "Directorio de contactos de cada aseguradora"}]}, {"id": "reporteria", "eyebrow": "Reportería financiera", "nombre": "Reportería especializada", "resumen": "Portal de reportería en tiempo real sobre el sistema core de préstamos. Cada módulo abre su propio reporte, con histórico, respaldo diario y réplica de los reportes oficiales.", "cifras": [{"valor": "29", "etiqueta": "reportes específicos"}, {"valor": "16", "etiqueta": "módulos en el portal"}, {"valor": "140", "etiqueta": "endpoints"}, {"valor": "273", "etiqueta": "consultas SQL"}], "modulos": [{"nombre": "Reportes específicos", "funciones": ["29 reportes predefinidos sobre la base", "Exportación a Excel", "Mega reportes unificados"]}, {"nombre": "Histórico", "funciones": ["Reportes ya generados para volver a descargar", "Respaldo diario automático (snapshot)", "Descarga de todos los reportes juntos"]}, {"nombre": "Comparación y anexo", "funciones": ["Actualiza el cuadro legal con un reporte nuevo", "Muestra qué cambió entre dos cortes"]}, {"nombre": "Saldos de los préstamos", "funciones": ["Capital, interés, FECI, seguros y mora", "Por sucursal, cartera y financiamiento", "A cualquier fecha de corte"]}, {"nombre": "Informe semanal de cartera", "funciones": ["Saldo con y sin intereses", "Créditos creados y abonos del período", "Excel con una hoja por vista"]}, {"nombre": "Revisión diaria de cartera", "funciones": ["Carteras y pagos con seguro", "Revisión día por día"]}, {"nombre": "Cobro contra aplicación", "funciones": ["Pagos adelantados", "Días de desfase entre cobro y aplicación"]}, {"nombre": "Pagos adelantados en dos cuentas", "funciones": ["Cobros, aplicaciones y pendientes al corte", "Orden de aplicación por antigüedad"]}, {"nombre": "Entrada de caja de seguro", "funciones": ["Cobros de seguro por recibo", "Plan del préstamo y lo pagado al corte"]}, {"nombre": "Seguros: del sistema a la contabilidad", "funciones": ["Qué mandó el sistema", "Qué quedó en el mayor", "Diferencias del mes"]}, {"nombre": "Anexos de seguro", "funciones": ["Planilla de vida y formulario del colectivo", "Pólizas propias y colectivo", "Por mes o por día"]}, {"nombre": "Módulo contable", "funciones": ["Balance y resultados por mes", "Mayor de cada cuenta", "Se actualiza solo cada día"]}, {"nombre": "Reporte regulatorio de factores de riesgo", "funciones": ["Estructura lista para subir al regulador", "Clientes, riesgo, producto y garantía", "Pagos y desembolsos del período"]}, {"nombre": "Bienes reposeídos", "funciones": ["Cuadro de activos, ventas y legal", "Trazabilidad y contratos de alquiler", "Acceso con contraseña"]}, {"nombre": "Constructor visual", "funciones": ["Reportes sin escribir SQL", "Editor SQL con plantillas", "Mapeo de campos y relaciones entre tablas"]}, {"nombre": "Business Intelligence y asistente IA", "funciones": ["Resumen, gráficos, estadísticas e insights", "Mora corriente, mora 30+ y perfil de clientes", "Preguntas en lenguaje normal sobre el reporte"]}], "destacados": [{"titulo": "Intereses por mes", "funciones": ["Resumen de saldos de interés consolidado por período", "Tres secciones por sucursal y cartera, o todas combinadas", "Vistas: reporte, gráfica, detalle de préstamos, saldo con intereses y saldo sin intereses", "La misma lógica se usa en los mega reportes y en el histórico"]}, {"titulo": "Manejo no devengado (comisión de manejo)", "funciones": ["Manejo por cartera: cartera propia contra cartera adquirida", "Cómo se compone el sobre saldo y detalle por préstamo", "Verificación contra contabilidad con partidas conciliatorias", "Descarga del cuadro en Excel"]}], "reportes": ["Reporte de cartera", "Cobros sin legal", "Cobros sin legal por sucursal", "Política de financiamiento", "Mega reporte por sucursal", "Mega reporte unificado", "Sobre saldo por sucursal", "Clasificación de cartera por sucursal", "Cartera de negocios", "Clasificación de cartera: préstamos y clientes", "Clientes natural, jurídico y extranjero", "Cuadro natural, jurídico y extranjero", "Cartera natural, jurídico y sociedad", "Garantías natural y jurídico", "Clientes PEP", "Perfil de cliente por número de préstamos", "Perfil de cliente por cantidad de clientes", "Verificación de subcarteras", "Pagos de seguros por préstamo", "Detalle colectivo total por fórmula", "Detalle colectivo total", "Creaciones del mes", "Préstamos activos sobre saldo y agregado", "Creaciones día a día", "Préstamos activos de dos meses atrás", "Detalle colectivo con recargo", "Detalle colectivo mejorado"], "flujo": ["Lee en vivo la base del sistema core de préstamos", "Calcula saldos, intereses, seguros y manejo con las mismas reglas del sistema", "Cuadra cada cifra contra los reportes oficiales", "Entrega pantallas, Excel y PowerPoint", "Guarda una foto diaria de cada reporte en el histórico"], "tecnologias": ["Node.js", "Express", "SQL Server", "IIS", "Chart.js", "Excel", "PowerPoint", "Asistente IA"], "i": [{"n": "shots7_rep__rep_menu", "c": "Menú principal de la reportería: módulos de consultas, cartera y seguros"}, {"n": "shots7_rep__rep_esp_tarjetas", "c": "Catálogo de reportes predefinidos sobre la cartera de préstamos"}, {"n": "shots7_rep__rep_esp1_cartera", "c": "Reporte de cartera: préstamos con saldo, tasa, plazo y días de mora"}, {"n": "shots7_rep__rep_esp2_cobros", "c": "Reporte de cobros: letras vencidas y monto atrasado por cliente y cobrador"}, {"n": "shots7_rep__rep_esp7_clasificacion", "c": "Clasificación de la cartera por días de mora con su provisión"}, {"n": "shots7_rep__rep_esp11_garantias", "c": "Garantías de cada préstamo con su valor y cobertura"}, {"n": "shots7_rep__rep_dashboard", "c": "Dashboard ejecutivo con indicadores de la cartera"}, {"n": "shots7_rep__rep_dashboard_graficos", "c": "Gráficos del dashboard: distribución, top 10 y comparativo"}, {"n": "shots7_rep__rep_int_reporte", "c": "Intereses por mes: saldo anterior, débito, crédito y saldo actual por préstamo"}, {"n": "shots7_rep__rep_int_grafica", "c": "Gráfica de intereses devengados mes a mes"}, {"n": "shots7_rep__rep_int_detalle", "c": "Detalle de préstamos con saldo con y sin intereses"}, {"n": "shots7_rep__rep_int_cap", "c": "Gráfica del saldo de capital con intereses por mes"}, {"n": "shots7_rep__rep_int_sinint", "c": "Saldo sin intereses: débitos y créditos de capital por préstamo"}, {"n": "shots7_rep__rep_historico", "c": "Histórico de reportes generados, con favoritos y descarga"}, {"n": "shots7_rep__rep_saldos_prestamos", "c": "Saldos de los préstamos por sucursal, cartera y financiamiento"}, {"n": "shots7_rep__rep_saldos_prestamos_b", "c": "Detalle de saldos con subtotales por tipo de financiamiento"}, {"n": "shots7_rep__rep_informe_semanal", "c": "Informe semanal de cartera con y sin intereses, listo para presentar"}, {"n": "shots7_rep__rep_manejo_migrada", "c": "Manejo no devengado por sección de cartera y cartera migrada"}, {"n": "shots7_rep__rep_manejo_migrada_b", "c": "Detalle por préstamo del manejo cargado y su saldo"}, {"n": "shots7_rep__rep_verificacion_manejo", "c": "Conciliación del manejo no devengado: sistema contra contabilidad"}, {"n": "shots7_rep__rep_verificacion_manejo_b", "c": "Partidas conciliatorias que explican la diferencia y veredicto de cuadre"}, {"n": "shots7_rep__rep_entrada_caja_seguro", "c": "Entrada de caja de seguros: cobrado de vida, bien e incendio por pagaré"}, {"n": "shots7_rep__rep_entrada_caja_seguro_b", "c": "Lista de recibos de caja con el desglose de seguros"}, {"n": "shots7_rep__rep_reporte4", "c": "Reporte para el regulador: factores de riesgo de la cartera"}, {"n": "shots7_rep__rep_anexos_t1", "c": "Anexo de seguro: vida cobrada al cliente por préstamo"}, {"n": "shots7_rep__rep_anexos_t4", "c": "Anexo de seguro: planilla de vida del colectivo con tarifas"}, {"n": "shots7_rep__rep_anexos_t5", "c": "Anexo de seguro: saldos de préstamos con seguros por cartera"}, {"n": "shots7_rep__rpiis_comisiones", "c": "Reporte de política de financiamiento con tasa de interés y tasa de comisión"}, {"n": "repmod", "c": "Portal con todos los módulos"}, {"n": "repmod_c02", "c": "Comparación y anexo legal"}, {"n": "rep_index_RP", "c": "Constructor visual de reportes"}, {"n": "pla_sql", "c": "Editor SQL"}, {"n": "pla_mapeo", "c": "Mapeo de campos"}, {"n": "pla_relaciones", "c": "Relaciones entre tablas"}, {"n": "pla_bi_t5", "c": "Análisis de mora 30+"}, {"n": "pla_ia", "c": "Asistente IA sobre el reporte"}, {"n": "rep_documentacion-sistema", "c": "Documentación técnica generada del código"}]}, {"id": "planilla", "eyebrow": "Recursos humanos", "nombre": "Sistema de planilla", "resumen": "Planilla quincenal completa para Panamá: colaboradores, asistencia con reloj biométrico, préstamos y descuentos, vacaciones, liquidaciones, décimo tercer mes y reportes oficiales.", "cifras": [{"valor": "38", "etiqueta": "pantallas"}, {"valor": "2", "etiqueta": "quincenas por mes"}, {"valor": "3", "etiqueta": "cálculos de ley: CSS, SE e ISR"}, {"valor": "2", "etiqueta": "reportes oficiales"}], "modulos": [{"nombre": "Colaboradores", "funciones": ["Ficha de cada colaborador", "Carga desde Excel", "Exportación a Excel"]}, {"nombre": "Planilla quincenal", "funciones": ["Salario, horas extra y otros ingresos", "Seguro Social, Seguro Educativo e ISR", "Neto a pagar por colaborador"]}, {"nombre": "Cierre quincenal", "funciones": ["Asistente de cierre paso a paso", "Valida antes de cerrar", "Guarda el historial de la quincena"]}, {"nombre": "Asistencia y reloj biométrico", "funciones": ["Importa las marcaciones del reloj", "Detecta tardanzas, almuerzos y café excedidos", "Descuentos automáticos"]}, {"nombre": "Préstamos y descuentos", "funciones": ["Cuentas por cobrar, seguros y bancos", "Descuentos quincenales automáticos", "Capacidad de descuento por colaborador"]}, {"nombre": "Vacaciones", "funciones": ["Días acumulados y tomados", "Cálculo según el historial de planilla"]}, {"nombre": "Liquidaciones", "funciones": ["Prestaciones según el Código de Trabajo", "Total a pagar por colaborador"]}, {"nombre": "Décimo tercer mes y provisiones", "funciones": ["Cálculo del décimo", "Provisiones contables del período"]}, {"nombre": "Exceso laboral y horas extra", "funciones": ["Recargos según la jornada", "Detección de excesos"]}, {"nombre": "Reportes oficiales", "funciones": ["Planilla para la Caja de Seguro Social", "Declaración para la Dirección de Ingresos", "Reporte mensual y anual"]}, {"nombre": "Cartas y constancias", "funciones": ["Cartas de trabajo y constancias", "Archivo mensual de documentos"]}, {"nombre": "Administración", "funciones": ["Usuarios y permisos", "Historial de cambios", "Respaldos automáticos y estado del sistema"]}], "flujo": ["Se cargan los colaboradores y las marcaciones del reloj", "El sistema aplica descuentos, préstamos y horas extra", "Calcula Seguro Social, Seguro Educativo, ISR y neto", "Se cierra la quincena y queda en el historial", "Genera los reportes oficiales y las provisiones"], "tecnologias": ["Node.js", "SQL Server", "IIS", "Excel", "Reloj biométrico"], "i": [{"n": "shots7_pla__01_inicio", "c": "Panel de inicio: nómina bruta, neto, retenciones y costo para la empresa de la quincena, con la asistencia del año"}, {"n": "shots7_pla__01_inicio_b", "c": "Ranking de colaboradores con más tardanzas, pausas y permisos, y la evolución anual de la planilla"}, {"n": "shots7_pla__02_colaboradores", "c": "Lista de colaboradores con cédula, cargo, salario, fecha de ingreso, antigüedad y edad"}, {"n": "shots7_pla__03_planilla", "c": "Planilla quincenal: salario, horas extras, Seguro Social, Seguro Educativo, ISR, descuentos y neto de cada colaborador"}, {"n": "shots7_pla__04_reloj", "c": "Reloj biométrico: marcaciones importadas y eventos detectados (tardanzas, pausas largas, horas extra)"}, {"n": "shots7_pla__04_reloj_b", "c": "Detalle de todos los eventos del reloj del mes con horario y minutos"}, {"n": "shots7_pla__05_asistencia", "c": "Asistencia del mes: cómo se calcula el descuento por minuto y resumen de eventos"}, {"n": "shots7_pla__05_asistencia_b", "c": "Pausas y almuerzos excedidos y horas extra, con el monto a descontar o pagar"}, {"n": "shots7_pla__06_prestamos", "c": "Préstamos y cuentas por cobrar: total prestado, cuotas, saldo pendiente y gráficos por tipo y por banco"}, {"n": "shots7_pla__06_prestamos_b", "c": "Detalle de cada descuento activo: seguro, banco o adelanto, con cuota y saldo"}, {"n": "shots7_pla__07_descuentos", "c": "Descuentos quincenales por colaborador: Seguro Social, Seguro Educativo, ISR, CxC, seguro, bancos y neto"}, {"n": "shots7_pla__08_vacaciones", "c": "Vacaciones: días ganados, tomados y disponibles de cada colaborador"}, {"n": "shots7_pla__09_liquidaciones", "c": "Liquidaciones de personal que salió: causa, tiempo trabajado, monto bruto, deducciones y neto"}, {"n": "shots7_pla__10_decimo", "c": "Décimo tercer mes por partida (abril, agosto, diciembre) con ISR, neto y estado de pago"}, {"n": "shots7_pla__11_provisiones", "c": "Provisiones contables del año: vacaciones, décimo, prima de antigüedad e indemnización por mes"}, {"n": "shots7_pla__12_cierre", "c": "Cierre de quincena paso a paso con lista de verificación antes de cerrar"}, {"n": "shots7_pla__13_historial", "c": "Historial de quincenas ya aplicadas con sus totales de descuentos y neto"}, {"n": "shots7_pla__13_historial_detalle", "c": "Detalle guardado de una quincena pasada, colaborador por colaborador"}, {"n": "shots7_pla__14_reportes_dgi", "c": "Reportes oficiales para la Caja de Seguro Social (Forma 03) y la DGI (Forma 03B)"}, {"n": "shots7_pla__15_usuarios", "c": "Usuarios del sistema con su rol, último acceso y estado"}, {"n": "shots7_pla__16_auditoria", "c": "Bitácora de cambios: quién hizo qué, cuándo y en qué tabla"}, {"n": "shots7_pla__17_reportes", "c": "Módulo de reportes: plantillas listas de reportes de cartera de préstamos"}, {"n": "shots7_pla__17_reportes_cartera", "c": "Reporte de cartera de préstamos ficticia con saldos, montos, plazos y tasas"}, {"n": "shots7_pla__18_constructor", "c": "Constructor visual: se eligen tablas y campos para armar un reporte sin escribir SQL"}]}, {"id": "parking", "eyebrow": "Estacionamientos", "nombre": "ParkSmart Pro", "resumen": "Sistema para administrar un estacionamiento: entradas y salidas, cobro automático por tarifa, mapa de espacios en vivo, clientes con membresía, caja por cajero, reportes, usuarios con roles y respaldos.", "cifras": [{"valor": "11", "etiqueta": "módulos"}, {"valor": "3", "etiqueta": "roles: admin, operador y cajero"}, {"valor": "100", "etiqueta": "espacios en 5 zonas (demo)"}], "modulos": [{"nombre": "Dashboard", "funciones": ["Ingresos del día y del mes", "Ocupación y tipos de vehículo", "Afluencia y últimas entradas"]}, {"nombre": "Entrada de vehículo", "funciones": ["Registro por placa y tipo de vehículo", "Asigna el espacio automáticamente", "Ticket de entrada"]}, {"nombre": "Salida y cobro", "funciones": ["Busca por placa o ticket", "Calcula el cobro según la tarifa y el tiempo de gracia", "Recibo de pago"]}, {"nombre": "Mapa de espacios", "funciones": ["Espacios libres, ocupados y en mantenimiento", "Filtros por auto, moto, VIP y discapacitado", "Zonas por nivel"]}, {"nombre": "Tarifas y cobros", "funciones": ["Por hora, fracción o día", "Tiempo de gracia por tarifa"]}, {"nombre": "Clientes y abonados", "funciones": ["Membresías activas y vencidas", "Varias placas por cliente"]}, {"nombre": "Caja", "funciones": ["Apertura y cierre por cajero", "Diferencias de caja"]}, {"nombre": "Reportes", "funciones": ["Ingresos y vehículos por día", "Exportación a Excel y PDF"]}, {"nombre": "Usuarios, configuración y mantenimiento", "funciones": ["Permisos por rol en pantalla y en el servidor", "Datos del parqueo y formato del ticket", "Respaldos, restauración y auditoría"]}], "flujo": ["El operador registra la entrada y el sistema asigna el espacio", "El mapa se actualiza en vivo", "A la salida se calcula el cobro con la tarifa", "El cajero cierra su caja", "Los reportes muestran ingresos y ocupación"], "tecnologias": ["React", "TypeScript", "Vite", "Tailwind CSS", "Node.js", "Express", "Prisma", "SQLite", "JWT"], "i": [{"n": "park_dashboard", "c": "Dashboard: ingresos del día y del mes, ocupación y tipos de vehículo"}, {"n": "park_mapa", "c": "Mapa de espacios en vivo por zona"}, {"n": "park_dashboard_b", "c": "Afluencia, estado en vivo y últimas entradas"}, {"n": "park_entrada", "c": "Entrada de vehículo con asignación automática de espacio"}, {"n": "park_salida", "c": "Salida y cobro de los vehículos en el parqueo"}, {"n": "park_mapa_b", "c": "Zonas de motos y VIP en el mapa"}, {"n": "park_tarifas", "c": "Tarifas por hora, fracción y día, con tiempo de gracia"}, {"n": "park_clientes", "c": "Clientes y abonados con su membresía"}, {"n": "park_caja", "c": "Apertura y cierre de caja por cajero"}, {"n": "park_caja_b", "c": "Historial de cajas con diferencias"}, {"n": "park_reportes", "c": "Reportes y estadísticas con exportación a Excel y PDF"}, {"n": "park_reportes_b", "c": "Cierres de caja por día"}, {"n": "park_usuarios", "c": "Usuarios con roles"}, {"n": "park_configuracion", "c": "Configuración del parqueo y vista previa del ticket"}, {"n": "park_mantenimiento", "c": "Respaldos, restauración y bitácora de auditoría"}, {"n": "park_login", "c": "Inicio de sesión con usuarios de prueba"}]}, {"id": "crm", "eyebrow": "Hotelería", "nombre": "CRM hotelero", "resumen": "CRM para hoteles hecho con Claude Code: reservas, planning, huéspedes, habitaciones, tareas, marketing, reseñas y reportes, con permisos por rol y acceso con código QR.", "cifras": [{"valor": "11", "etiqueta": "módulos"}, {"valor": "5", "etiqueta": "roles de usuario"}, {"valor": "0", "etiqueta": "dependencias que instalar"}], "modulos": [{"nombre": "Inicio", "funciones": ["Ocupación, ADR y RevPAR", "Llegadas y salidas del día"]}, {"nombre": "Reservas y planning", "funciones": ["Check-in, check-out y pagos", "Planning tipo Gantt por habitación"]}, {"nombre": "Huéspedes", "funciones": ["Ficha 360° y fidelización", "Niveles por gasto y estancias"]}, {"nombre": "Habitaciones y tareas", "funciones": ["Estado de cada habitación por piso", "Tareas de limpieza y mantenimiento en tablero"]}, {"nombre": "Marketing y reseñas", "funciones": ["Campañas segmentadas", "Respuesta a reseñas por plataforma"]}, {"nombre": "Equipo y accesos", "funciones": ["Permisos por rol", "Registro e inicio de sesión con código QR"]}], "tecnologias": ["Node.js", "JavaScript", "Claude Code", "QR"], "i": [{"n": "crm_inicio", "c": "Inicio: ocupación, ADR y RevPAR"}, {"n": "crm_reservas", "c": "Reservas"}, {"n": "crm_planning", "c": "Planning por habitación"}, {"n": "crm_huespedes", "c": "Huéspedes"}, {"n": "crm_habitaciones", "c": "Habitaciones por piso"}, {"n": "crm_tareas", "c": "Tareas en tablero"}, {"n": "crm_marketing", "c": "Campañas de marketing"}, {"n": "crm_resenas", "c": "Reseñas"}, {"n": "crm_reportes", "c": "Reportes"}, {"n": "crm_equipo", "c": "Equipo y accesos"}, {"n": "crm_ajustes", "c": "Ajustes y credencial QR"}, {"n": "crm_login", "c": "Inicio de sesión"}]}, {"id": "jarvis", "eyebrow": "Asistente personal", "nombre": "J.A.R.V.I.S.", "resumen": "Asistente personal por voz construido con Claude Code. Junta en una pantalla el correo y la agenda de Microsoft 365, las tareas, los servidores y los gastos, y ejecuta rutinas con un botón o un comando.", "cifras": [{"valor": "9", "etiqueta": "rutinas de un toque"}, {"valor": "4", "etiqueta": "estados de voz"}, {"valor": "5", "etiqueta": "métricas en vivo"}], "modulos": [{"nombre": "Métricas", "funciones": ["Correos sin leer y reuniones de hoy (Microsoft 365)", "Tareas abiertas", "Servidores en línea y gasto del mes"]}, {"nombre": "Agenda y vencimientos", "funciones": ["Reuniones del día", "Lo que vence en los próximos 30 días"]}, {"nombre": "Voz", "funciones": ["Escuchando, pensando, hablando y ejecutando", "Mantener pulsado el núcleo o la barra espaciadora para hablar", "Atajos: 1 a 9 para comandos, R para rutinas, Esc para callar"]}, {"nombre": "Rutinas", "funciones": ["Resumen de la bandeja, plan de hoy y reporte de la mañana", "Revisión semanal y plan de mañana", "Estado de servidores, tareas, gastos del mes y limpieza de la bóveda"]}, {"nombre": "Telemetría", "funciones": ["Modelo, latencia y voz a texto", "Consultas del día", "Cerebro: Claude Code"]}], "tecnologias": ["Claude Code", "Microsoft 365", "Voz a texto", "JavaScript"], "i": [{"n": "jarvis_panel", "c": "Panel principal: métricas, agenda, vencimientos, telemetría y rutinas"}]}, {"id": "centinel", "eyebrow": "Seguridad de equipos", "nombre": "Centinel", "resumen": "Agente que se instala en cada computadora de la empresa y reporta a un panel web: equipos, actividad en vivo, seguridad, navegación, auditoría, red, ciberseguridad y antirrobo.", "cifras": [{"valor": "9", "etiqueta": "vistas del panel"}, {"valor": "1", "etiqueta": "instalador .exe"}, {"valor": "AD", "etiqueta": "despliegue por Active Directory"}], "modulos": [{"nombre": "Agente", "funciones": ["Programa que corre en cada equipo", "Instalador .exe y tarea programada", "Despliegue masivo por Active Directory"]}, {"nombre": "Panel", "funciones": ["Resumen y ficha de cada equipo", "Actividad en vivo y navegación", "Auditoría, red y ciberseguridad"]}, {"nombre": "Antirrobo", "funciones": ["Ubicación y comandos remotos al equipo"]}], "tecnologias": ["Python", "Supabase", "PowerShell", "Active Directory"], "i": [{"n": "art_centinel", "c": "Resumen de equipos"}, {"n": "art_centinel_t1", "c": "Equipos"}, {"n": "art_centinel_t2", "c": "Actividad en vivo"}, {"n": "art_centinel_t3", "c": "Seguridad"}, {"n": "art_centinel_t4", "c": "Navegación"}, {"n": "art_centinel_t5", "c": "Auditoría"}, {"n": "art_centinel_t6", "c": "Red"}, {"n": "art_centinel_t7", "c": "Ciberseguridad"}, {"n": "art_centinel_t8", "c": "Antirrobo"}]}];
+const CAPS = [{"feature": true, "icon": "search", "color": "#0071e3", "t": "Ingeniería inversa de sistemas", "d": "Estudio un sistema que ya existe hasta entender su lógica: cómo guarda los datos, cómo calcula y qué reporta. Con eso construyo lo que falta, sin tocar lo que ya funciona.", "pasos": ["Leo la base de datos y los reportes que el sistema ya entrega", "Encuentro de dónde sale cada cifra y cómo se calcula", "Repito el cálculo y lo cuadro contra el reporte original", "Entrego el reporte, el módulo o la herramienta nueva"]}, {"w": 3, "icon": "chart", "color": "#7b4cff", "t": "Reportería a la medida", "d": "Reportes específicos para cada área, con filtros por fecha, exportación a Excel, histórico y respaldo automático.", "tags": ["Excel", "PDF", "Histórico", "Gráficos"]}, {"w": 3, "icon": "db", "color": "#e0457b", "t": "Conexión directa a la base de datos", "d": "Programas locales que se conectan al servidor y a la base de datos de la empresa, siempre que se tenga acceso a la plataforma y al servidor.", "tags": ["SQL Server", "MySQL", "Node.js", "Consultas en vivo"]}, {"w": 2, "icon": "grid", "color": "#ff9f0a", "t": "Sistemas completos", "d": "Pólizas, planilla, CRM y módulos financieros con usuarios, permisos y auditoría."}, {"w": 2, "icon": "spark", "color": "#30b0c7", "t": "Agentes de IA", "d": "Asistentes que leen documentos, correos y carpetas, y responden con la fuente."}, {"w": 2, "icon": "phone", "color": "#34c759", "t": "Apps móviles", "d": "Apps de Android y web instalable, con datos en la nube o en el teléfono."}, {"w": 3, "icon": "cloud", "color": "#5e5ce6", "t": "Servidores Windows y Linux", "d": "Configuro Windows Server y Linux: IIS, servicios de Node.js, SQL Server, Active Directory, VMware y respaldos.", "tags": ["Windows Server", "Linux", "IIS", "VMware", "Active Directory"]}, {"w": 3, "icon": "shield", "color": "#ff375f", "t": "Infraestructura y nube", "d": "Trabajo sobre la infraestructura que ya tiene la empresa o la monto en la nube: Azure, Google Cloud o AWS.", "tags": ["Azure", "Google Cloud", "AWS", "Vercel"]}];
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+const IMG = n => "img/" + n + ".jpg";
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const catName = id => (CATS.find(c => c.id === id) || {}).name || "";
+const ICONS = {
+  search:'<path d="M10.5 4a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13Zm9.5 16-4.8-4.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+  chart:'<path d="M4 20V10m6 10V4m6 16v-7m4 7H2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+  db:'<ellipse cx="12" cy="5.5" rx="7.5" ry="2.8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4.5 5.5v13c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-13M4.5 12c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8" fill="none" stroke="currentColor" stroke-width="2"/>',
+  spark:'<path d="M12 3v4m0 10v4M3 12h4m10 0h4M6 6l2.5 2.5m7 7L18 18M6 18l2.5-2.5m7-7L18 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+  phone:'<rect x="6.5" y="2.5" width="11" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 18.5h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+  cloud:'<path d="M7 18.5h10a4 4 0 0 0 .6-7.95A5.5 5.5 0 0 0 7 9.5a4.5 4.5 0 0 0 0 9Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
+  shield:'<path d="M12 3 5 6v5.5c0 4.3 3 7.7 7 9.5 4-1.8 7-5.2 7-9.5V6l-7-3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
+  grid:'<rect x="3.5" y="3.5" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/>'
+};
+const ico = (k, c) => `<span class="ico" style="background:${c}"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[k] || ""}</svg></span>`;
+
+/* cifras */
+const totalShots = new Set([...P.flatMap(p => p.i.map(x => x.n)), ...SYS.flatMap(s => s.i.map(x => x.n))]).size;
+$("#stProj").textContent = P.length;
+$("#stShots").textContent = totalShots;
+$("#stCat").textContent = CATS.length;
+$("#projLead").textContent = `${P.length} proyectos: sistemas, apps, dashboards, agentes de IA y sitios web.`;
+
+/* visor: lista global de imágenes con su texto */
+const GAL = {}; // clave -> {t, i:[{n,c}]}
+SYS.forEach(s => GAL["s:" + s.id] = {t: s.nombre, i: s.i});
+P.forEach((p, k) => GAL["p:" + k] = {t: p.t, i: p.i});
+
+/* titular: muro 3D de pantallas reales */
+(function(){
+  const pool = [];
+  SYS.forEach(s => s.i.slice(0, 6).forEach(x => pool.push(x.n)));
+  P.forEach(p => p.i.slice(0, 1).forEach(x => pool.push(x.n)));
+  const uniq = [...new Set(pool)];
+  const cols = 5, per = 6, pl = $("#plane");
+  for(let c = 0; c < cols; c++){
+    const imgs = []; for(let r = 0; r < per; r++) imgs.push(uniq[(c * per + r * 7 + c * 3) % uniq.length]);
+    const col = document.createElement("div"); col.className = "col" + (c % 2 ? " up" : "");
+    col.style.setProperty("--d", (60 + c * 9) + "s");
+    const html = imgs.map((n, k) => `<img src="${IMG(n)}" alt="" ${c < 2 && k < 2 ? "" : 'loading="lazy"'} width="1040" height="650">`).join("");
+    col.innerHTML = `<div class="track">${html}${html}</div>`;
+    pl.appendChild(col);
+  }
+})();
+
+/* capacidades */
+$("#bento").innerHTML = CAPS.map(c => {
+  if(c.feature) return `<div class="tile feature t-6 reveal"><div class="txt">${ico(c.icon, c.color)}<h3>${esc(c.t)}</h3><p>${esc(c.d)}</p></div><div class="flow-mini">${c.pasos.map((x, j) => `<div><b>${String(j+1).padStart(2,"0")}</b>${esc(x)}</div>`).join("")}</div></div>`;
+  return `<div class="tile t-${c.w} reveal">${ico(c.icon, c.color)}<h3>${esc(c.t)}</h3><p>${esc(c.d)}</p>${c.tags ? `<div class="cloud">${c.tags.map(t => `<span>${esc(t)}</span>`).join("")}</div>` : ""}</div>`;
+}).join("");
+
+/* capítulos */
+$("#chapters").innerHTML = SYS.map((s, k) => {
+  const band = k % 2 ? "" : " band";
+  const mods = s.modulos || [];
+  const first = mods.slice(0, 9), rest = mods.slice(9);
+  const modHtml = m => `<div class="mod"><h4>${esc(m.nombre)}</h4><ul>${m.funciones.map(f => `<li>${esc(f)}</li>`).join("")}</ul></div>`;
+  return `<section class="chapter${band}" id="sys-${s.id}"><div class="in">
+    <div class="ch-head reveal"><p class="eyebrow">${esc(s.eyebrow || "")}</p><h2>${esc(s.nombre)}</h2><p>${esc(s.resumen)}</p></div>
+    ${s.cifras && s.cifras.length ? `<div class="ch-stats reveal">${s.cifras.map(c => `<div><strong>${esc(c.valor)}</strong><span>${esc(c.etiqueta)}</span></div>`).join("")}</div>` : ""}
+    ${s.i.length ? `<div class="gal reveal" data-g="s:${s.id}"><div class="lid"><div class="gal-view"><div class="gal-track">${s.i.map((x, j) => `<button type="button" data-g="s:${s.id}" data-j="${j}" aria-label="Ampliar: ${esc(x.c || s.nombre)}"><img src="${IMG(x.n)}" alt="${esc(x.c || s.nombre)}" loading="lazy" width="1040" height="650"></button>`).join("")}</div></div></div>
+      <div class="gal-under"><p class="gal-cap"></p><div class="gal-ctl"><button class="round gp" type="button" aria-label="Pantalla anterior">‹</button><span class="count"></span><button class="round gn" type="button" aria-label="Pantalla siguiente">›</button></div></div>
+      <div class="thumbs">${s.i.map((x, j) => `<button type="button" data-t="${j}" aria-label="Ir a la pantalla ${j+1}"><img src="${IMG(x.n)}" alt="" loading="lazy" width="1040" height="650"></button>`).join("")}</div></div>` : ""}
+    ${mods.length ? `<div class="mods">${first.map(modHtml).join("")}<div class="extra" hidden style="display:contents">${rest.map(modHtml).join("")}</div></div>${rest.length ? `<div class="more"><button class="pill ghost" type="button" data-more>Ver los ${mods.length} módulos ›</button></div>` : ""}` : ""}
+    ${s.destacados && s.destacados.length ? `<div class="spot">${s.destacados.map(d => `<div class="mod"><h4>${esc(d.titulo)}</h4><ul>${d.funciones.map(f => `<li>${esc(f)}</li>`).join("")}</ul></div>`).join("")}</div>` : ""}
+    ${s.reportes && s.reportes.length ? `<div class="reps"><h4>${s.reportes.length} reportes listos para usar</h4><ol>${s.reportes.map((r, j) => `<li><b>${String(j+1).padStart(2,"0")}</b><span>${esc(r)}</span></li>`).join("")}</ol></div>` : ""}
+    ${s.flujo && s.flujo.length ? `<div class="flow">${s.flujo.map((f, j) => `<div><b>Paso ${j+1}</b>${esc(f)}</div>`).join("")}</div>` : ""}
+    ${s.tecnologias && s.tecnologias.length ? `<div class="chips">${s.tecnologias.map(t => `<span>${esc(t)}</span>`).join("")}</div>` : ""}
+  </div></section>`;
+}).join("");
+
+document.querySelectorAll("[data-more]").forEach(b => b.addEventListener("click", () => {
+  const ex = b.closest(".in").querySelector(".extra"); const open = ex.hidden;
+  ex.hidden = !open; b.textContent = open ? "Ver menos ›" : b.dataset.label;
+}));
+document.querySelectorAll("[data-more]").forEach(b => b.dataset.label = b.textContent);
+
+/* galerías de capítulo */
+document.querySelectorAll(".gal").forEach(g => {
+  const key = g.dataset.g, items = GAL[key].i, tr = g.querySelector(".gal-track"), cap = g.querySelector(".gal-cap"), cnt = g.querySelector(".count"), th = g.querySelectorAll(".thumbs button");
+  const idx = () => Math.round(tr.scrollLeft / Math.max(1, tr.clientWidth));
+  const paint = () => { const i = Math.min(items.length - 1, idx()); cap.innerHTML = `<b>${esc(GAL[key].t)}</b> · ${esc(items[i].c || "")}`; cnt.textContent = `${i+1} / ${items.length}`; th.forEach((t, j) => t.classList.toggle("on", j === i)); };
+  const go = i => tr.scrollTo({left: ((i + items.length) % items.length) * tr.clientWidth, behavior: reduce ? "auto" : "smooth"});
+  g.querySelector(".gp").onclick = () => go(idx() - 1);
+  g.querySelector(".gn").onclick = () => go(idx() + 1);
+  th.forEach(t => t.onclick = () => go(+t.dataset.t));
+  let raf; tr.addEventListener("scroll", () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(paint); }, {passive:true});
+  paint();
+});
+
+/* proyectos */
+let cat = "all", q = "";
+function carHtml(p, k){
+  if(!p.i.length) return "";
+  const many = p.i.length > 1;
+  return `<div class="car"><div class="car-track">${p.i.map((x, j) => `<button type="button" data-g="p:${k}" data-j="${j}" aria-label="Ampliar: ${esc(x.c || p.t)}"><img src="${IMG(x.n)}" alt="${esc(x.c || p.t)}" loading="lazy" width="1040" height="650"></button>`).join("")}</div>${many ? `<button type="button" class="car-nav p" aria-label="Pantalla anterior">‹</button><button type="button" class="car-nav n" aria-label="Pantalla siguiente">›</button>${p.i.length <= 10 ? `<span class="car-dots">${p.i.map((_, j) => `<i class="${j ? "" : "on"}"></i>`).join("")}</span>` : `<span class="car-n">1 / ${p.i.length}</span>`}` : ""}</div>`;
+}
+function renderFilters(){
+  const all = [{id:"all", name:"Todos"}, ...CATS];
+  $("#filters").innerHTML = all.map(c => { const n = c.id === "all" ? P.length : P.filter(p => p.c === c.id).length; return `<button type="button" class="filter" data-cat="${c.id}" aria-pressed="${c.id === cat}">${esc(c.name)}<span>${n}</span></button>`; }).join("");
+}
+$("#filters").addEventListener("click", e => { const b = e.target.closest("button"); if(!b) return; cat = b.dataset.cat; renderFilters(); render(); });
+$("#q").addEventListener("input", e => { q = e.target.value.trim().toLowerCase(); render(); });
+function render(){
+  const list = P.map((p, k) => [p, k]).filter(([p]) => (cat === "all" || p.c === cat) && (!q || [p.t, p.d, ...(p.b || []), ...p.s, catName(p.c)].join(" ").toLowerCase().includes(q)));
+  $("#grid").innerHTML = list.map(([p, k]) => `<article class="card">${carHtml(p, k)}<div class="body"><span class="cat">${esc(catName(p.c))}</span><h3>${esc(p.t)}</h3><p>${esc(p.d)}</p>${p.b && p.b.length ? `<ul>${p.b.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}<div class="tags">${p.s.map(x => `<span>${esc(x)}</span>`).join("")}</div></div></article>`).join("");
+  $("#empty").hidden = list.length > 0;
+  $("#grid").querySelectorAll(".car").forEach(car => {
+    const tr = car.querySelector(".car-track"), total = tr.children.length, dots = car.querySelectorAll(".car-dots i"), n = car.querySelector(".car-n");
+    const idx = () => Math.round(tr.scrollLeft / Math.max(1, tr.clientWidth));
+    const go = i => tr.scrollTo({left: ((i + total) % total) * tr.clientWidth, behavior: reduce ? "auto" : "smooth"});
+    car.querySelector(".car-nav.p")?.addEventListener("click", () => go(idx() - 1));
+    car.querySelector(".car-nav.n")?.addEventListener("click", () => go(idx() + 1));
+    tr.addEventListener("scroll", () => { const i = idx(); dots.forEach((d, j) => d.classList.toggle("on", j === i)); if(n) n.textContent = `${i+1} / ${total}`; }, {passive:true});
+  });
+}
+renderFilters(); render();
+
+/* visor */
+let lbK = null, lbI = 0; const lb = $("#lb"); let lastFocus = null;
+function lbShow(){ const g = GAL[lbK], x = g.i[lbI]; $("#lbImg").src = IMG(x.n); $("#lbImg").alt = x.c || g.t; $("#lbCap").innerHTML = `${esc(g.t)}${x.c ? " · " + esc(x.c) : ""}<span>${lbI+1} / ${g.i.length}</span>`; $("#lbPrev").hidden = $("#lbNext").hidden = g.i.length < 2; }
+document.addEventListener("click", e => { const b = e.target.closest("button[data-g][data-j]"); if(!b) return; lastFocus = b; lbK = b.dataset.g; lbI = +b.dataset.j; lbShow(); lb.hidden = false; $("#lbClose").focus(); });
+const lbClose = () => { lb.hidden = true; lastFocus && lastFocus.focus(); };
+$("#lbClose").onclick = lbClose;
+$("#lbPrev").onclick = () => { const n = GAL[lbK].i.length; lbI = (lbI - 1 + n) % n; lbShow(); };
+$("#lbNext").onclick = () => { const n = GAL[lbK].i.length; lbI = (lbI + 1) % n; lbShow(); };
+lb.addEventListener("click", e => { if(e.target === lb) lbClose(); });
+document.addEventListener("keydown", e => { if(lb.hidden) return; if(e.key === "Escape") lbClose(); if(e.key === "ArrowRight") $("#lbNext").click(); if(e.key === "ArrowLeft") $("#lbPrev").click(); });
+
+/* ---- capa de interacción del rediseño ---- */
+(function(){
+  const root = document.documentElement, hero = $("#hero3d"), fine = matchMedia("(hover:hover) and (pointer:fine)").matches;
+
+
+  /* titular palabra por palabra */
+  const h1 = $("#h1"); let wi = 0; const frag = document.createDocumentFragment();
+  [...h1.childNodes].forEach(n => {
+    if(n.nodeType === 3) n.textContent.split(/(\s+)/).forEach(w => {
+      if(!w) return; if(/^\s+$/.test(w)){ frag.append(" "); return; }
+      const s = document.createElement("span"); s.className = "w"; s.style.setProperty("--i", wi++); s.textContent = w; frag.append(s);
+    });
+    else { n.classList.add("w"); n.style.setProperty("--i", wi++); frag.append(n); }
+  });
+  h1.replaceChildren(frag);
+
+  /* cifras con conteo */
+  document.querySelectorAll(".stats strong").forEach(el => {
+    const end = +el.textContent || 0; if(reduce){ el.textContent = end; return; }
+    const t0 = performance.now() + 900, dur = 1400;
+    const step = now => { const k = Math.min(1, Math.max(0, (now - t0) / dur)); el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3))); if(k < 1) requestAnimationFrame(step); };
+    el.textContent = 0; requestAnimationFrame(step);
+  });
+
+  /* cinta de tecnologías */
+  const techs = ["Node.js","SQL Server","Express","IIS","Supabase","Python","Claude","OCR","Chart.js","Three.js","Android","React Native","Azure","Google Cloud","AWS","VMware","Active Directory","Microsoft 365","Playwright","Excel · PDF"];
+  const row = techs.map(t => `<span>${esc(t)}</span>`).join("");
+  $("#mq").innerHTML = row + row;
+
+  /* muro 3D: ratón y scroll */
+  let tx = 0, ty = 0, raf = 0;
+  const apply = () => { raf = 0; hero.style.setProperty("--rx", tx.toFixed(3)); hero.style.setProperty("--ry", ty.toFixed(3)); };
+  if(!reduce && fine) hero.addEventListener("pointermove", e => {
+    const r = hero.getBoundingClientRect();
+    tx = (e.clientX - r.left) / r.width * 2 - 1; ty = (e.clientY - r.top) / r.height * 2 - 1;
+    if(!raf) raf = requestAnimationFrame(apply);
+  });
+  hero.addEventListener("pointerleave", () => { tx = ty = 0; if(!raf) raf = requestAnimationFrame(apply); });
+
+  const nav = $("#nav"), bar = $("#progress");
+  let sraf = 0;
+  const onScroll = () => { sraf = 0;
+    const y = scrollY, h = innerHeight;
+    if(!reduce) hero.style.setProperty("--sp", Math.min(1, y / h).toFixed(3));
+    bar.style.setProperty("--p", (y / Math.max(1, document.documentElement.scrollHeight - h)).toFixed(4));
+    nav.classList.toggle("scrolled", y > 20);
+  };
+  addEventListener("scroll", () => { if(!sraf) sraf = requestAnimationFrame(onScroll); }, {passive:true});
+  onScroll();
+
+  /* aparición escalonada */
+  document.querySelectorAll(".bento > .reveal, .tech > .reveal, .principles > .reveal").forEach(el => {
+    el.style.setProperty("--rd", ([...el.parentNode.children].indexOf(el) % 6) * 80 + "ms");
+  });
+  root.classList.add("js");
+  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add("inview"); io.unobserve(e.target); } }), {rootMargin:"0px 0px -8% 0px", threshold:.08});
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+  /* enlace activo en la barra */
+  const links = [...document.querySelectorAll(".nav nav a")];
+  const secIO = new IntersectionObserver(es => es.forEach(e => {
+    if(!e.isIntersecting) return;
+    let id = e.target.id; if(e.target.classList.contains("chapter")) id = "sistemas";
+    links.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + id));
+  }), {rootMargin:"-45% 0px -50% 0px"});
+  document.querySelectorAll("#capacidades, .chapter, #proyectos, #tecnologias, #contacto").forEach(s => secIO.observe(s));
+
+  /* luz que sigue al cursor + inclinación 3D */
+  if(fine){
+    const SURF = ".tile, .mod, .reps, .card, .card-contact";
+    document.addEventListener("pointermove", e => {
+      const el = e.target.closest(SURF); if(!el) return;
+      const r = el.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+      el.style.setProperty("--mx", x + "px"); el.style.setProperty("--my", y + "px");
+      if(!reduce && el.matches(".tile, .card-contact")){
+        el.classList.add("tilt");
+        el.style.setProperty("--ty", ((x / r.width - .5) * 6).toFixed(2) + "deg");
+        el.style.setProperty("--tx", ((.5 - y / r.height) * 6).toFixed(2) + "deg");
+      }
+    }, {passive:true});
+    document.addEventListener("pointerout", e => {
+      const el = e.target.closest(".tile, .card-contact"); if(!el || el.contains(e.relatedTarget)) return;
+      el.style.setProperty("--tx", "0deg"); el.style.setProperty("--ty", "0deg");
+    });
+  }
+
+  /* copiar teléfono */
+  $("#copyTel").addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText("6599-2602"); $("#copied").textContent = "Teléfono copiado"; }
+    catch(e){ const r = document.createRange(); r.selectNodeContents($("#tel")); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); $("#copied").textContent = "Selecciónalo y cópialo"; }
+    setTimeout(() => $("#copied").textContent = "", 2400);
+  });
+})();
+</script>
+
+
+</body>
+</html>
