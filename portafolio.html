@@ -59,9 +59,17 @@ button{font:inherit;color:inherit}
 .nav .bar{display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px;padding:0 10px 0 18px}
 .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;color:var(--ink);letter-spacing:-.02em}
 .logo i{width:26px;height:26px;border-radius:8px;background:var(--grad);display:grid;place-items:center;font-style:normal;font-size:11px;font-weight:800;color:#fff;box-shadow:0 6px 18px -6px var(--a2)}
-.nav nav{display:flex;gap:4px;font-size:14px}
-.nav nav a{color:var(--muted);padding:8px 12px;border-radius:10px;transition:color 200ms ease,background 200ms ease}
-.nav nav a:hover,.nav nav a.on{color:var(--ink);background:var(--soft)}
+.nav nav{position:relative;display:flex;gap:2px;padding:4px;border-radius:14px;font-size:14px;background:linear-gradient(180deg,#ffffff0a,#ffffff03);border:1px solid var(--line);box-shadow:inset 0 1px 0 #ffffff12}
+.nav nav a{position:relative;z-index:1;display:flex;align-items:center;gap:8px;color:var(--muted);padding:7px 14px;border-radius:10px;font-weight:500;transition:color 250ms ease}
+.nav nav a span{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.04em;color:#ffffff38;transition:color 250ms ease}
+.nav nav a:hover{color:var(--ink)}
+.nav nav a:hover span{color:#ffffff80}
+.nav nav a.on{color:#fff}
+.nav nav a.on span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav nav .ind{position:absolute;z-index:0;top:4px;bottom:4px;left:0;width:0;border-radius:10px;opacity:0;pointer-events:none;
+  background:linear-gradient(180deg,#ffffff1f,#ffffff08);box-shadow:inset 0 0 0 1px #ffffff26,0 10px 26px -12px var(--a2);
+  transition:transform 450ms var(--ease),width 450ms var(--ease),opacity 300ms ease}
+.nav nav .ind::after{content:"";position:absolute;left:24%;right:24%;bottom:-5px;height:2px;border-radius:2px;background:var(--grad);box-shadow:0 0 10px var(--a2),0 0 18px var(--a3)}
 .nav .right{display:flex;align-items:center;gap:8px}
 .theme{width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:transparent;cursor:pointer;display:grid;place-items:center;color:var(--muted);transition:color 200ms,background 200ms}
 .theme:hover{color:var(--ink);background:var(--soft)}
@@ -377,10 +385,11 @@ footer .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="bar">
     <a class="logo" href="#inicio"><i aria-hidden="true">JR</i>Javier Romero</a>
     <nav aria-label="Secciones">
-      <a href="#capacidades">Lo que hago</a>
-      <a href="#sistemas">Sistemas</a>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#tecnologias">Tecnologías</a>
+      <i class="ind" aria-hidden="true"></i>
+      <a href="#capacidades"><span>01</span>Lo que hago</a>
+      <a href="#sistemas"><span>02</span>Sistemas</a>
+      <a href="#proyectos"><span>03</span>Proyectos</a>
+      <a href="#tecnologias"><span>04</span>Tecnologías</a>
     </nav>
     <div class="right">
       <a class="pill" href="#contacto">Contacto</a>
@@ -702,7 +711,16 @@ document.addEventListener("keydown", e => { if(lb.hidden) return; if(e.key === "
     if(!e.isIntersecting) return;
     let id = e.target.id; if(e.target.classList.contains("chapter")) id = "sistemas";
     links.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + id));
+    moveInd(links.find(a => a.classList.contains("on")));
   }), {rootMargin:"-45% 0px -50% 0px"});
+  const navEl = document.querySelector(".nav nav"), ind = navEl.querySelector(".ind");
+  function moveInd(a){
+    if(!a){ ind.style.opacity = 0; return; }
+    ind.style.opacity = 1; ind.style.width = a.offsetWidth + "px"; ind.style.transform = "translateX(" + a.offsetLeft + "px)";
+  }
+  navEl.addEventListener("mouseover", e => { const a = e.target.closest("a"); if(a) moveInd(a); });
+  navEl.addEventListener("mouseleave", () => moveInd(links.find(a => a.classList.contains("on"))));
+  addEventListener("resize", () => moveInd(links.find(a => a.classList.contains("on"))));
   document.querySelectorAll("#capacidades, .chapter, #proyectos, #tecnologias, #contacto").forEach(s => secIO.observe(s));
 
   /* luz que sigue al cursor + inclinación 3D */
