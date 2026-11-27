@@ -382,6 +382,10 @@ footer .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .nav .pill{display:none}
   .scrollcue{display:none}
 }
+
+/* pantallas grandes: escala todo para que no se vea pequeño */
+@media (min-width:1800px){html{zoom:1.25}.hero3d{min-height:max(576px,80svh)}.lb img{max-height:60vh}}
+@media (min-width:2300px){html{zoom:1.5}.hero3d{min-height:max(480px,66.6svh)}.lb img{max-height:50vh}}
 </style>
 
 <div class="progress" id="progress" aria-hidden="true"></div>
